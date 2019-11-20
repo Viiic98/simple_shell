@@ -49,9 +49,15 @@ void ourcommands(char **buf, char **env)
 		while (ourcommands[j])
 		{
 			if (j == 1 && strcmp(ic[i], "cd") == 0)
+			{
 				_cd(arg, env);
+				break;
+			}
 			else if (j == 5 && strcmp(ic[i], "env") == 0)
+			{
 				_env(env);
+				break;
+			}
 			else if (strcmp(ourcommands[j], ic[i]) == 0)
 			{	
 				path(ic[i], arg, env);
