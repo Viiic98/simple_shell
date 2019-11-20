@@ -19,6 +19,7 @@
 
 /* MACROS */
 #define DELIM "|\n"
+#define SIZE_BUF 1024
 
 /* Principal functions */
 void ls(char*, char*, char**);

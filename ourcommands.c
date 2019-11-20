@@ -7,7 +7,7 @@
 void pipes(char *buf, char **env)
 {
 	int i = 0;
-	char **strings = malloc(1024 * sizeof(char *));
+	char **strings = malloc(SIZE_BUF * sizeof(char *));
 	char *command;
 
 	/*parsing line*/
@@ -27,9 +27,9 @@ void pipes(char *buf, char **env)
  **/
 void ourcommands(char **buf, char **env)
 {
-	char *ourcommands[8] = {"ls", "cd", "cp", "pwd", "echo", "env", "rm", "\0"};
-	char **ic = malloc(1024 * sizeof(char *)); 
-	char **arg = malloc(1024 * sizeof(char *));
+	char *ourcommands[8] = {"ls", "cd", "cp", "pwd", "echo", "env", "rm", NULL};
+	char **ic = malloc(SIZE_BUF * sizeof(char *)); 
+	char **arg = malloc(SIZE_BUF * sizeof(char *));
 	char *a;
 	int i = 0, j;
 
@@ -58,6 +58,8 @@ void ourcommands(char **buf, char **env)
 				break;
 			}
 		       	j++;
+			if (ourcommands[j] == NULL)
+				write(STDERR_FILENO, "Commands doesn't exist\n", 23);
 		}
 		i++;
 	}

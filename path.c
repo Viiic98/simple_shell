@@ -3,10 +3,10 @@
 void path(char *ic, char **arg, char **env)
 {
 	int i, son;
-	char *str = malloc(1024 * sizeof(char *));
-	char **pcopy = malloc(1024 * sizeof(char *));
-	char *copy = malloc(1024 * sizeof(char *));
-	char **dir = malloc(1024 * sizeof(char *));
+	char *str = malloc(SIZE_BUF * sizeof(char *));
+	char **pcopy = malloc(SIZE_BUF * sizeof(char *));
+	char *copy = malloc(SIZE_BUF * sizeof(char *));
+	char **dir = malloc(SIZE_BUF * sizeof(char *));
 	struct stat buf;
 	
 	for(i = 0; env[i] != '\0'; i++)
