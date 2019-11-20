@@ -27,7 +27,7 @@ void pwd(char*, char*, char**);
 void echo(char*, char*, char**);
 void cp(char*, char*, char**);
 void _env(char**);
-void _cd(void);
+void _cd(char **arg, char **env);
 
 
 /* Other functions */

@@ -49,7 +49,7 @@ void ourcommands(char **buf, char **env)
 		while (ourcommands[j])
 		{
 			if (j == 1 && strcmp(ic[i], "cd") == 0)
-				_cd();
+				_cd(arg, env);
 			else if (j == 5 && strcmp(ic[i], "env") == 0)
 				_env(env);
 			else if (strcmp(ourcommands[j], ic[i]) == 0)
