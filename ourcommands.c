@@ -58,7 +58,7 @@ void ourcommands(char **buf, char **env)
 				break;
 			}
 		       	j++;
-			if (ourcommands[j] == NULL)
+			if (!ourcommands[j])
 				write(STDERR_FILENO, "Commands doesn't exist\n", 23);
 		}
 		i++;
