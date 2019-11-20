@@ -1,0 +1,46 @@
+ -----------------------------------------------------------------------------
+|			     Functions and syscalls                           |
+ -----------------------------------------------------------------------------
+
+------------ functions that allow allocate and free dynamic memory ------------
+
+malloc
+free
+calloc
+realloc
+
+----------------------------------- Files -------------------------------------
+
+open	  - system call opens the file specified by pathname.
+read 	  - read from a file descriptor.
+write  	  - write to a file descriptor.
+stat 	  - get file status.
+close	  - closes a file descriptor.
+isatty	  - test whether a file descriptor refers to a terminal.
+
+--------------------------------- Directories ---------------------------------
+
+opendir	  - open a directory.
+readdir   - read a directory.
+closedir  - close a directory.
+chdir	  - changes the current working directory of the calling process to the directory specified in path.
+getcwd	  - get current working directory.
+getline   - delimited string input.
+
+----------------------------------- Process -----------------------------------
+
+fork 	  - creates a new process by duplicating the calling process.
+wait, waitpid 	    - wait for process to change state.
+wait3, wait4 	    - wait for process to change state, BSD style.
+kill	  - send signal to a process.
+exit	  - cause normal process termination.
+_Exit	  - terminate the calling process.
+
+----------------------------------- Others ------------------------------------
+
+access	  - check real user's permissions for a file.
+execve	  - execute program.
+fflush	  - flush a stream.
+signal 	  - ANSI C signal handling.
+strtok 	  - extract tokens from strings
+perror 	  - perror - print a system error message.
