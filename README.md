@@ -5,12 +5,12 @@ Simple Shell is a project to understand the behavior of the Real Shell starting 
 This project was built by Victor Arteaga and Orlando Gomez.
 
 # Table of Contents
-	1. [Authors](#Authors)
-	2. [Features](#Features)
-	3. [How to use](#Usage)
-	4. [How to compile](#Compilation)
-	5. [Requirements](#Requirements)
-	6. [Commands](#Commands)
+	1. #Authors
+	2. #Features
+	3. #Usage
+	4. #Compilation
+	5. #Requirements
+	6. #Commands
 
 # Authors
 	**Victor Arteaga**
