@@ -1,3 +1,3 @@
 ## SIMPLE SHELL PROJECT
-hola
+hola otra prueba
 Created by Orlando Gomez and Víctor Arteaga
