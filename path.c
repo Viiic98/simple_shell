@@ -1,5 +1,10 @@
 #include "holberton.h"
-
+/**
+ * path - function to find the path of the system
+ * @ic: function to find
+ * @arg: arguments
+ * @env: environment variables
+ **/
 void path(char *ic, char **arg, char **env)
 {
 	int i, son;
@@ -8,8 +13,8 @@ void path(char *ic, char **arg, char **env)
 	char *copy = malloc(SIZE_BUF * sizeof(char *));
 	char **dir = malloc(SIZE_BUF * sizeof(char *));
 	struct stat buf;
-	
-	for(i = 0; env[i] != '\0'; i++)
+
+	for (i = 0; env[i] != '\0'; i++)
 	{
 		if (strncmp(env[i], "PATH", 4) == 0)
 			break;
@@ -21,12 +26,12 @@ void path(char *ic, char **arg, char **env)
 		str = strtok(NULL, ":=");
 		dir[i] = str;
 	}
-	for(i = 0; dir[i] != '\0'; i++)
+	for (i = 0; dir[i] != '\0'; i++)
 	{
 		strcpy(copy, dir[i]);
 		strcat(copy, "/");
 		strcat(copy, ic);
-		if(stat(copy, &buf) == 0)
+		if (stat(copy, &buf) == 0)
 		{
 			arg[0] = copy;
 			son = fork();
