@@ -26,7 +26,7 @@ void ls(char*, char*, char**);
 void pwd(char*, char*, char**);
 void echo(char*, char*, char**);
 void cp(char*, char*, char**);
-void _env(char**);
+void _env(char **);
 void _cd(char **arg, char **env);
 
 
