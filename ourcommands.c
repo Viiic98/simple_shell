@@ -28,7 +28,7 @@ void pipes(char *buf, char **env)
 void ourcommands(char **buf, char **env)
 {
 	char *ourcommands[8] = {"ls", "cd", "cp", "pwd", "echo", "env", "rm", NULL};
-	char **ic = malloc(SIZE_BUF * sizeof(char *)); 
+	char **ic = malloc(SIZE_BUF * sizeof(char *));
 	char **arg = malloc(SIZE_BUF * sizeof(char *));
 	char *a;
 	int i = 0, j;
@@ -59,14 +59,12 @@ void ourcommands(char **buf, char **env)
 				break;
 			}
 			else if (strcmp(ourcommands[j], ic[i]) == 0)
-			{	
+			{
 				path(ic[i], arg, env);
 				break;
-			}
-		       	j++;
+			}			j++;
 			if (!ourcommands[j])
 				write(STDERR_FILENO, "Commands doesn't exist\n", 23);
-		}
-		i++;
+		}		i++;
 	}
 }
