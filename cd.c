@@ -1,6 +1,8 @@
 #include "holberton.h"
 /**
- * _cd - function ls
+ * _cd - function cd
+ * @arg: arguments
+ * @env: environment variables
  * Return: Nothing
  **/
 void _cd(char **arg, char **env)
