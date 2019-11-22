@@ -15,16 +15,16 @@ int main(int ac, char **av, char **env)
 	buf = malloc(1024 * sizeof(char));
 	if (!buf)
 	{
-		write(STDOUT_FILENO, "Error allocating space memory", 29);
+		print("Error allocating memory space\n");
 		exit(EXIT_FAILURE);
 	}
 	while (1)
 	{
-		write(STDOUT_FILENO, "#cisfun$ ", 9);
+		print("#cisfun$ ");
 		arg = getline(&buf, &buf_size, stdin);
 		if (arg == -1)
 		{
-			write(STDOUT_FILENO, "Error\n", 6);
+			print("Error\n");
 			return (-1);
 		}
 		if (strcmp(buf, "exit\n") == 0)

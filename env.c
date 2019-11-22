@@ -10,6 +10,7 @@ void _env(char **env)
 
 	for (i = 0; env[i] != '\0'; i++)
 	{
-		printf("%s\n", env[i]);
+		print(env[i]);
+		print("\n");
 	}
 }

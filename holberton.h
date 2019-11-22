@@ -28,10 +28,11 @@ void echo(char*, char*, char**);
 void cp(char*, char*, char**);
 void _env(char **);
 void _cd(char **arg, char **env);
-
+void path(char *, char **, char **);
 
 /* Other functions */
 void pipes(char*, char**);
 void ourcommands(char**, char**);
-
+int _strlen(char *);
+void print(char *);
 #endif

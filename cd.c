@@ -26,6 +26,10 @@ void _cd(char **arg, char **env)
 	{
 		status = chdir(arg[1]);
 		if (status == -1)
-			printf("-bash: cd: %s: No such file or directory\n", arg[1]);
+		{
+			print("-bash: cd: ");
+			print(arg[1]);
+			print(": No such file or directory\n");
+		}
 	}
 }
