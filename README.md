@@ -5,19 +5,19 @@ Simple Shell is a project to understand the behavior of the Real Shell starting 
 This project was built by Victor Arteaga and Orlando Gomez.
 
 # Table of Contents
-	1. #Authors
-	2. #Features
-	3. #Usage
-	4. #Compilation
-	5. #Requirements
-	6. #Commands
+	1. Authors
+	2. Features
+	3. Usage
+	4. Compilation
+	5. Requirements
+	6. Commands
 
 # Authors
-	**Victor Arteaga**
+	Victor Arteaga
 
 	- Github: [@Viiic98](https://github.com/Viiic98)
 
-	**Orlando Gomez**
+	Orlando Gomez
 
 	- Github: [@oran2527](https://github.com/oran2527)
 
@@ -25,6 +25,7 @@ This project was built by Victor Arteaga and Orlando Gomez.
 	- The main function takes the input of the user and analyze every argument to determine which function to execute with its respective flags and arguments.
 	- The input data of the user will be analyzed with the "|" character (pipe) to separate every single command.
 	- The Simple Shell calls intern functions like "pwd" and other extern functions like "env".
+	- The command execve takes the function and arguments and gives the respective output. 
 
 
 # How to use
@@ -50,40 +51,109 @@ This project was built by Victor Arteaga and Orlando Gomez.
 
 ## Command ls
 
-- The command **ls lists all the files and directories in the path that the user selects in the entry data.
+- The command ls lists all the files and directories in the path that the user selects in the entry data.
 
-## Flags
+### Some Flags
 
-- **l : Display long format information about Unix file type, permissions, number of hard links, owner, group, size, 
+- l : Display long format like Unix file type, permissions, number of hard links, owner, group, size, last-modified date and filename.
+
+- a : Display all files even hidden or files starting with ".".
+
+- t : Sort the list by modification time
+
+- -1 : Display all the files and directories line by line
+
+### Examples
+
+- ls -lat
+
+- ls -1
 
 ## Command cd 
 
-- The command **cd allows to change from the actual directory to other one.
+- The command cd allows to change from the actual directory to other one. If you put only the command, it redirects to the home directory.
+
+### Some Flags
+
+- ~ : Display the files and directories of the home directory.
+
+- . : Display the files and directories of the current directory.
+
+- .. : Display the files and directories of the parent directory.
+
+### Examples
+
+- cd ~
+
+- cd folder_current_directory
 
 ## Command cp
 
-- The command **cp allows to copy files and gives them a name or rewrite an existing file. 
+- The command cp allows to copy files to a path and gives them a name or rewrite an existing file. 
+
+### Some Flags
+
+- R or r : copy directories recursively.
+
+- p : copy the file and preserve metadata like time of last data modification and time of the last access.
+
+### Examples
+
+- cp file1 file2 ../parentdirectory
+
+- cp file1 file2
 
 ## Command pwd
 
-- The command **pwd allows to display the path of the current directory.
+- The command pwd allows to display the path of the current directory.
+
+### Example 
+
+- pwd
 
 ## Command echo
 
-- The command **echo allows to display the argument that the user types after the first argument.
+- The command echo allows to display the argument that the user types after the first argument.
+
+### Example
+
+- echo "Hola"
 
 ## Command env
 
-- The command **env allows to display all the environment variables of the system.
+- The command env allows to display all the environment variables of the system.
+
+
+### Example
+
+- env
 
 ## Command rm
 
-- The command **rm allows to delete all the files or directories that the user is available.
+- The command rm allows to delete all the files or directories that the user is available.
+
+### Some Flags 
+
+- r : Remove directories and its contents
+
+- i : Ask for every deletion
+
+- f : Force every deletion without asking
+
+### Examples
+
+- rm -rf directory_with_files
+
+- rm file1
+
+- rm file1 file2 file3
 
 ## Command exit
 
-- The command **exit allows to finish the execution of the Simple Shell.
+- The command exit allows to finish the execution of the Simple Shell.
 
+### Example
 
+- exit
 
 
