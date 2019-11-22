@@ -8,8 +8,6 @@
  **/
 int main(int ac, char **av, char **env)
 {
-	int arg = 0, cont = 0, i;
-	size_t buf_size;
 	char *buf;
 
 	buf = malloc(1024 * sizeof(char));
@@ -21,15 +19,31 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		print("#cisfun$ ");
-		arg = getline(&buf, &buf_size, stdin);
-		if (arg == -1)
-		{
-			print("Error\n");
-			return (-1);
-		}
+		buf = line(buf);
 		if (strcmp(buf, "exit\n") == 0)
+		{
+			free(buf);
 			exit(0);
+		}
 		pipes(buf, env);
 	}
 	return (0);
+}
+/**
+ * line - get an input line
+ * @buf: pointer to buffer
+ * Return: pointer to the buffer
+ */
+void *line(char *buf)
+{
+	int arg = 0;
+	size_t buf_size;
+
+	arg = getline(&buf, &buf_size, stdin);
+	if (arg == -1)
+	{
+		print("Error getting the value\n");
+		return (NULL);
+	}
+	return (buf);
 }

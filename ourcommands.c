@@ -65,7 +65,7 @@ void ourcommands(char **buf, char **env)
 			}			j++;
 			if (!ourcommands[j])
 				print("Commands doesn't exist\n");
-		}		
+		}
 		i++;
 	}
 }

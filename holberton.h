@@ -22,6 +22,7 @@
 #define SIZE_BUF 1024
 
 /* Principal functions */
+void *line(char *);
 void ls(char*, char*, char**);
 void pwd(char*, char*, char**);
 void echo(char*, char*, char**);
@@ -35,4 +36,5 @@ void pipes(char*, char**);
 void ourcommands(char**, char**);
 int _strlen(char *);
 void print(char *);
+void *alloc_1(char *, char *);
 #endif

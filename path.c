@@ -8,8 +8,7 @@
 void path(char *ic, char **arg, char **env)
 {
 	int i, son;
-	char *str = malloc(SIZE_BUF * sizeof(char *));
-	char **pcopy = malloc(SIZE_BUF * sizeof(char *));
+	char *str;
 	char *copy = malloc(SIZE_BUF * sizeof(char *));
 	char **dir = malloc(SIZE_BUF * sizeof(char *));
 	struct stat buf;
@@ -19,16 +18,17 @@ void path(char *ic, char **arg, char **env)
 		if (strncmp(env[i], "PATH", 4) == 0)
 			break;
 	}
-	strcpy(str, env[i]);
+	str = alloc_1(str, env[i]);
 	str = strtok(str, ":=");
 	for (i = 0; str != '\0'; i++)
 	{
 		str = strtok(NULL, ":=");
 		dir[i] = str;
 	}
+	free(str);
 	for (i = 0; dir[i] != '\0'; i++)
 	{
-		strcpy(copy, dir[i]);
+		copy = alloc_1(copy, dir[i]);
 		strcat(copy, "/");
 		strcat(copy, ic);
 		if (stat(copy, &buf) == 0)
@@ -40,5 +40,6 @@ void path(char *ic, char **arg, char **env)
 			wait(&son);
 			break;
 		}
+		free(copy);
 	}
 }
