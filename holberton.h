@@ -23,10 +23,6 @@
 
 /* Principal functions */
 void *line(char *);
-void ls(char*, char*, char**);
-void pwd(char*, char*, char**);
-void echo(char*, char*, char**);
-void cp(char*, char*, char**);
 void _env(char **);
 void _cd(char **arg, char **env);
 void path(char *, char **, char **);
@@ -37,4 +33,5 @@ void ourcommands(char**, char**);
 int _strlen(char *);
 void print(char *);
 void *alloc_1(char *, char *);
+
 #endif
