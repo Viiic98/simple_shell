@@ -7,9 +7,10 @@
  **/
 void path(char *ic, char **arg, char **env)
 {
-	int i, son;
+	int i;
+	pid_t son;
 	char *str;
-	char *copy = malloc(SIZE_BUF * sizeof(char *));
+	char *copy;
 	char **dir = malloc(SIZE_BUF * sizeof(char *));
 	struct stat buf;
 
@@ -42,4 +43,7 @@ void path(char *ic, char **arg, char **env)
 		}
 		free(copy);
 	}
+	free(copy);
+	free(dir);
+	free(arg);
 }

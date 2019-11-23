@@ -10,15 +10,15 @@ int main(int ac, char **av, char **env)
 {
 	char *buf;
 
-	buf = malloc(1024 * sizeof(char));
-	if (!buf)
-	{
-		print("Error allocating memory space\n");
-		exit(EXIT_FAILURE);
-	}
 	while (1)
 	{
 		print("#cisfun$ ");
+		buf = malloc(1024 * sizeof(char));
+		if (!buf)
+		{
+			print("Error allocating memory space\n");
+			exit(EXIT_FAILURE);
+		}
 		buf = line(buf);
 		if (strcmp(buf, "exit\n") == 0)
 		{
@@ -26,6 +26,7 @@ int main(int ac, char **av, char **env)
 			exit(0);
 		}
 		pipes(buf, env);
+		free(buf);
 	}
 	return (0);
 }

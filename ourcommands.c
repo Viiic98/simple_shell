@@ -11,13 +11,7 @@ void pipes(char *buf, char **env)
 	char *command;
 
 	/*parsing line*/
-	command = strtok(buf, DELIM);
-	while (command != NULL)
-	{
-		strings[i] = command;
-		i++;
-		command = strtok(NULL, DELIM);
-	}
+	strings = alloc_2(strings, buf, DELIM);
 	ourcommands(strings, env);
 }
 /**
@@ -41,6 +35,8 @@ void ourcommands(char **buf, char **env)
 		a = strtok(NULL, " \n\0");
 		i++;
 	}
+	arg[i] = NULL;
+	ic[1] = NULL;
 	i = 0;
 	while (ic[i])
 	{
@@ -68,4 +64,6 @@ void ourcommands(char **buf, char **env)
 		}
 		i++;
 	}
+	free(ic);
+	_free(buf);
 }
