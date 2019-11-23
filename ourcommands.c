@@ -7,11 +7,12 @@
 void pipes(char *buf, char **env)
 {
 	int i = 0;
-	char **strings = malloc(SIZE_BUF * sizeof(char *));
+	char **strings;
 	char *command;
 
 	/*parsing line*/
-	strings = alloc_2(strings, buf, DELIM);
+	strings = alloc_2(strings, buf, DELIM, " ");
+	free(buf);
 	ourcommands(strings, env);
 }
 /**
@@ -23,21 +24,14 @@ void ourcommands(char **buf, char **env)
 {
 	char *ourcommands[8] = {"ls", "cd", "cp", "pwd", "echo", "env", "rm", NULL};
 	char **ic = malloc(SIZE_BUF * sizeof(char *));
-	char **arg = malloc(SIZE_BUF * sizeof(char *));
+	char **arg;
 	char *a;
 	int i = 0, j;
 
-	a =  strtok(buf[i], " \n\0");
-	ic[i] = a;
-	while (a)
-	{
-		arg[i] = a;
-		a = strtok(NULL, " \n\0");
-		i++;
-	}
-	arg[i] = NULL;
-	ic[1] = NULL;
+	arg = alloc_2(arg, buf[0], " \n", " \n");
 	i = 0;
+	ic[0] = arg[0];
+	ic[1] = NULL;
 	while (ic[i])
 	{
 		j = 0;
@@ -64,6 +58,5 @@ void ourcommands(char **buf, char **env)
 		}
 		i++;
 	}
-	free(ic);
 	_free(buf);
 }

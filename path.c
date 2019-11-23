@@ -11,7 +11,7 @@ void path(char *ic, char **arg, char **env)
 	pid_t son;
 	char *str;
 	char *copy;
-	char **dir = malloc(SIZE_BUF * sizeof(char *));
+	char **dir;
 	struct stat buf;
 
 	for (i = 0; env[i] != '\0'; i++)
@@ -20,14 +20,9 @@ void path(char *ic, char **arg, char **env)
 			break;
 	}
 	str = alloc_1(str, env[i]);
-	str = strtok(str, ":=");
-	for (i = 0; str != '\0'; i++)
-	{
-		str = strtok(NULL, ":=");
-		dir[i] = str;
-	}
+	dir = alloc_2(dir, str, ":=", ":=");
 	free(str);
-	for (i = 0; dir[i] != '\0'; i++)
+	for (i = 0; dir[i] != NULL; i++)
 	{
 		copy = alloc_1(copy, dir[i]);
 		strcat(copy, "/");
@@ -44,6 +39,6 @@ void path(char *ic, char **arg, char **env)
 		free(copy);
 	}
 	free(copy);
-	free(dir);
-	free(arg);
+	_free(dir);
+	free(ic);
 }
