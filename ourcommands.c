@@ -12,7 +12,6 @@ void pipes(char *buf, char **env)
 
 	/*parsing line*/
 	strings = alloc_2(strings, buf, DELIM, " ");
-	free(buf);
 	ourcommands(strings, env);
 }
 /**
@@ -59,4 +58,5 @@ void ourcommands(char **buf, char **env)
 		i++;
 	}
 	_free(buf);
+	free(ic);
 }

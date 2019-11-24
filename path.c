@@ -38,7 +38,6 @@ void path(char *ic, char **arg, char **env)
 		}
 		free(copy);
 	}
-	free(copy);
+	_free(arg);
 	_free(dir);
-	free(ic);
 }
