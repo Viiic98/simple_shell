@@ -7,11 +7,10 @@
  **/
 void _cd(char **arg, char **env)
 {
-	int i, status;
-	char *str, *str2, *str3, *str_old, *str_home;
+	int status;
+	char *str = NULL, *str2, *str3, *str_old;
 
 	str_old = _get_cwd();
-	str_home = _get_home(env);
 	if (arg[1] == NULL)
 	{
 		chdir(str);
@@ -79,7 +78,7 @@ char *_get_home(char **env)
  **/
 char *_get_oldpwd(char **env)
 {
-	char *str2;
+	char *str2 = NULL;
 	int i;
 
 	for (i = 0; env[i] != '\0'; i++)

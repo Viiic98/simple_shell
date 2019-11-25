@@ -9,7 +9,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *buf;
-	int fd = 0, sig = 0;
+	int fd = 0;
 
 	if (ac > 1)
 	{
@@ -71,6 +71,7 @@ void *line(char *buf)
  **/
 void _catch(int signal)
 {
+	signal = signal * 1;
 	print("\n");
 	print("#cisfun$ ");
 }

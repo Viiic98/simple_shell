@@ -30,8 +30,7 @@ int path(char *ic, char **arg, char **env)
  */
 int exe_file(char *ic, char **arg, char **env)
 {
-	int son, ferr = 0;
-	char *copy;
+	int son;
 
 	arg[0] = ic;
 	son = fork();
@@ -93,7 +92,7 @@ int exe_command(char *ic, char **arg, char **env)
 int ferr(char *ic)
 {
 	int ferr = 0;
-	char *copy;
+	char *copy = NULL;
 
 	copy = alloc_1(copy, ic);
 	copy = strtok(copy, "/");
