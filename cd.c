@@ -12,7 +12,7 @@ void _cd(char **arg, char **env)
 
 	for (i = 0; env[i] != '\0'; i++)
 	{
-		if (strncmp(env[i], "HOME", 4) == 0)
+		if (_strncmp(env[i], "HOME", 4) == 0)
 			break;
 	}
 	str = strtok(env[i], "=");
