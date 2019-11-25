@@ -11,6 +11,11 @@ int main(int ac, char **av, char **env)
 	char *buf;
 	int fd = 0;
 
+	if (ac > 1)
+	{
+		print(av[0]);
+		exit(EXIT_FAILURE);
+	}
 	buf = malloc(1024 * sizeof(char *));
 	fd = isatty(fd);
 	if (fd == 1)
