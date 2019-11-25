@@ -23,9 +23,9 @@
 
 /* Principal functions */
 void *line(char *);
-int exe_file(char *m, char **, char **);
+int exe_file(char *, char **, char **);
 void _env(char **);
-void _cd(char **arg, char **env);
+void _cd(char **, char **);
 int path(char *, char **, char **);
 
 /* Other functions */
@@ -37,8 +37,10 @@ void *alloc_1(char *, char *);
 char **alloc_2(char **, char *, char*, char *);
 void _free(char **);
 char *_strcpy(char *, char *);
-int _strcmp(char *s1, char *s2);
-int _strncmp(char *s1, char *s2, int c);
-char *_strcat(char *dest, char *src);
-
+int _strcmp(char *, char *);
+int _strncmp(char *, char *, int);
+char *_strcat(char *, char *);
+char *_get_cwd(void);
+char *_get_home(char **);
+char *_get_oldpwd(char **);
 #endif
