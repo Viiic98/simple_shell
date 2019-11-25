@@ -22,10 +22,8 @@ void pipes(char *buf, char **env)
 void ourcommands(char **buf, char **env)
 {
 	char **ic = malloc(SIZE_BUF * sizeof(char *));
-	char *icopy;
-	char **arg;
-	char *a;
-	int i = 0, j;
+	char *icopy, **arg, *a;
+	int i = 0, j, perr;
 
 	arg = alloc_2(arg, buf[0], " \n", " \n");
 	i = 0;
@@ -49,9 +47,8 @@ void ourcommands(char **buf, char **env)
 			}
 			else if (j == 2)
 			{
-				if (path(ic[i], arg, env))
-					break;
-				else
+				perr = (path(ic[i], arg, env));
+				if (!perr)
 				{
 					print(icopy);
 					print(": command not found\n");
