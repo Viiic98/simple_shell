@@ -47,13 +47,13 @@ void ourcommands(char **buf, char **env)
 				_env(env);
 				break;
 			}
-			else if (strcmp(ourcommands[j], ic[i]) == 0)
+			else if (_strcmp(ourcommands[j], ic[i]) == 0)
 			{
 				path(ic[i], arg, env);
 				break;
 			}			j++;
 			if (!ourcommands[j])
-				print("Commands doesn't exist\n");
+				print("Command doesn't exist\n");
 		}
 		i++;
 	}
