@@ -25,8 +25,8 @@ int path(char *ic, char **arg, char **env)
 	for (i = 0; dir[i] != NULL; i++)
 	{
 		copy = alloc_1(copy, dir[i]);
-		strcat(copy, "/");
-		strcat(copy, ic);
+		_strcat(copy, "/");
+		_strcat(copy, ic);
 		if (stat(copy, &buf) == 0)
 		{
 			arg[0] = copy;
