@@ -4,6 +4,7 @@
  * @ic: function to find
  * @arg: arguments
  * @env: environment variables
+ * Return: 1 if success, 0 if it fails
  **/
 int path(char *ic, char **arg, char **env)
 {
