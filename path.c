@@ -50,8 +50,11 @@ int path(char *ic, char **arg, char **env)
 	return (1);
 }
 /**
- *
- *
+ * exe_file - Execute a file that exists in path
+ * @ic: input command
+ * @arg: arguments
+ * @env: environment
+ * Return: 1 if success
  */
 int exe_file(char *ic, char **arg, char **env)
 {
