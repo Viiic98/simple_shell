@@ -25,7 +25,8 @@ int main(int ac, char **av, char **env)
 			free(buf);
 			exit(0);
 		}
-		pipes(buf, env);
+		if (buf[0] != '\n')
+			pipes(buf, env);
 	}
 	return (0);
 }
