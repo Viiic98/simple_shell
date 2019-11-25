@@ -43,4 +43,6 @@ char *_strcat(char *, char *);
 char *_get_cwd(void);
 char *_get_home(char **);
 char *_get_oldpwd(char **);
+void _catch(int);
+
 #endif
