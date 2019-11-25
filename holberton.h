@@ -24,6 +24,7 @@
 /* Principal functions */
 void *line(char *);
 int exe_file(char *, char **, char **);
+int exe_command(char *, char **, char **);
 void _env(char **);
 void _cd(char **, char **);
 int path(char *, char **, char **);
@@ -44,5 +45,5 @@ char *_get_cwd(void);
 char *_get_home(char **);
 char *_get_oldpwd(char **);
 void _catch(int);
-
+int ferr(char *);
 #endif

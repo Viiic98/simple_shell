@@ -46,10 +46,16 @@ void ourcommands(char **buf, char **env)
 			else if (j == 2)
 			{
 				perr = (path(ic[i], arg, env));
-				if (!perr)
+				if (perr == 0)
 				{
 					print(icopy);
 					print(": command not found\n");
+				}
+				else if (perr == -1)
+				{
+					print("-bash: ");
+					print(icopy);
+					print(": No such file or directory\n");
 				}
 			}
 			j++;

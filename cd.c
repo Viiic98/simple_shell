@@ -6,10 +6,10 @@
  * Return: Nothing
  **/
 void _cd(char **arg, char **env)
-{	
+{
 	int i, status;
 	char *str, *str2, *str3, *str_old, *str_home;
-	
+
 	str_old = _get_cwd();
 	str_home = _get_home(env);
 	if (arg[1] == NULL)
@@ -23,7 +23,7 @@ void _cd(char **arg, char **env)
 		str2 = _get_oldpwd(env);
 		chdir(str2);
 		str3 = _get_cwd();
-		setenv("PWD", str3, 1);	
+		setenv("PWD", str3, 1);
 		setenv("OLDPWD", str_old, 1);
 	}
 	else
@@ -49,11 +49,11 @@ void _cd(char **arg, char **env)
 char *_get_cwd(void)
 {
 	char *str3;
-	
-		str3 = malloc(SIZE_BUF * sizeof(char));
-		if (str3 != NULL)
-			str3 = getcwd(str3, SIZE_BUF);
-		return (str3);
+
+	str3 = malloc(SIZE_BUF * sizeof(char));
+	if (str3 != NULL)
+		str3 = getcwd(str3, SIZE_BUF);
+	return (str3);
 }
 /**
  * _get_home -function path home
@@ -81,7 +81,7 @@ char *_get_oldpwd(char **env)
 {
 	char *str2;
 	int i;
-	
+
 	for (i = 0; env[i] != '\0'; i++)
 		if (strncmp(env[i], "OLDPWD", 6) == 0)
 			break;
