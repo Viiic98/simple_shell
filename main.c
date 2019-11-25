@@ -9,29 +9,35 @@
 int main(int ac, char **av, char **env)
 {
 	char *buf;
+	int fd = 0;
 
-	if (ac > 1)
-	{
-		print(av[1]);
-		print("non-interactive mode\n");
-	}
 	buf = malloc(1024 * sizeof(char *));
-	while (1)
+	fd = isatty(fd);
+	if (fd == 1)
 	{
-		print("#cisfun$ ");
-		if (!buf)
+		while (1)
 		{
-			print("Error allocating memory space\n");
-			exit(EXIT_FAILURE);
+			print("#cisfun$ ");
+			if (!buf)
+			{
+				print("Error allocating memory space\n");
+				exit(EXIT_FAILURE);
+			}
+			buf = line(buf);
+			if (_strcmp(buf, "exit\n") == 0)
+			{
+				free(buf);
+				exit(0);
+			}
+			if (buf[0] != '\n')
+				pipes(buf, env);
 		}
+	}
+	else
+	{
 		buf = line(buf);
-		if (_strcmp(buf, "exit\n") == 0)
-		{
-			free(buf);
-			exit(0);
-		}
-		if (buf[0] != '\n')
-			pipes(buf, env);
+		pipes(buf, env);
+		
 	}
 	return (0);
 }
