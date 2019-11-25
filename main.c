@@ -10,6 +10,11 @@ int main(int ac, char **av, char **env)
 {
 	char *buf;
 
+	if (ac > 1)
+	{
+		print(av[1]);
+		print("non-interactive mode\n");
+	}
 	buf = malloc(1024 * sizeof(char *));
 	while (1)
 	{

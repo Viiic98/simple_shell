@@ -7,7 +7,7 @@
  */
 void *alloc_1(char *ptr, char *str)
 {
-	int len, i = 0;
+	int len;
 
 	len = _strlen(str);
 	ptr = malloc(len * sizeof(char *) + 1);

@@ -6,9 +6,7 @@
  **/
 void pipes(char *buf, char **env)
 {
-	int i = 0;
-	char **strings;
-	char *command;
+	char **strings = NULL;
 
 	/*parsing line*/
 	strings = alloc_2(strings, buf, DELIM, " ");
@@ -22,7 +20,7 @@ void pipes(char *buf, char **env)
 void ourcommands(char **buf, char **env)
 {
 	char **ic = malloc(SIZE_BUF * sizeof(char *));
-	char *icopy, **arg, *a;
+	char *icopy, **arg = NULL;
 	int i = 0, j, perr;
 
 	arg = alloc_2(arg, buf[0], " \n", " \n");

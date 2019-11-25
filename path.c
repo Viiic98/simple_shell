@@ -10,9 +10,9 @@ int path(char *ic, char **arg, char **env)
 {
 	int i;
 	pid_t son;
-	char *str;
+	char *str = NULL;
 	char *copy;
-	char **dir;
+	char **dir = NULL;
 	struct stat buf;
 
 	for (i = 0; env[i] != '\0'; i++)
