@@ -21,8 +21,8 @@ void pipes(char *buf, char **env)
  **/
 void ourcommands(char **buf, char **env)
 {
-	char *ourcommands[3] = {"cd", "env", NULL};
 	char **ic = malloc(SIZE_BUF * sizeof(char *));
+	char *icopy;
 	char **arg;
 	char *a;
 	int i = 0, j;
@@ -33,9 +33,9 @@ void ourcommands(char **buf, char **env)
 	ic[1] = NULL;
 	while (ic[i])
 	{
+		icopy = alloc_1(icopy, ic[i]);
 		j = 0;
-
-		while (ourcommands[j])
+		while (j <= 2)
 		{
 			if (j == 0 && strcmp(ic[i], "cd") == 0)
 			{
@@ -47,19 +47,20 @@ void ourcommands(char **buf, char **env)
 				_env(env);
 				break;
 			}
-			else
+			else if (j == 2)
 			{
-				if(path(ic[i], arg, env))
+				if (path(ic[i], arg, env))
 					break;
 				else
 				{
-					print("Command doesn't exist\n");
-					break;
+					print(icopy);
+					print(": command not found\n");
 				}
 			}
 			j++;
 		}
 		i++;
+		free(icopy);
 	}
 	_free(buf);
 	free(ic);
