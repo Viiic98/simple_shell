@@ -9,7 +9,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *buf;
-	int fd = 0;
+	int fd = 0, sig = 0;
 
 	if (ac > 1)
 	{
@@ -28,6 +28,7 @@ int main(int ac, char **av, char **env)
 				print("Error allocating memory space\n");
 				exit(EXIT_FAILURE);
 			}
+			signal(SIGINT, _catch);
 			buf = line(buf);
 			if (_strcmp(buf, "exit\n") == 0)
 			{
@@ -62,4 +63,14 @@ void *line(char *buf)
 		return (NULL);
 	}
 	return (buf);
+}
+/**
+ * _catch - function to catch ctrl c
+ * @signal: value of the signal catched
+ * Return: value of signal
+ **/
+void _catch(int signal)
+{
+	print("\n");
+	print("#cisfun$ ");
 }
