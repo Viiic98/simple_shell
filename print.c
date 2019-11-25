@@ -9,7 +9,6 @@ void print(char *str)
 	int len;
 
 	len = _strlen(str);
-
 	write(STDOUT_FILENO, str, len);
 }
 /**
@@ -27,10 +26,8 @@ int _strlen(char *str)
 }
 /**
  * _strcpy - Copy the value
- *
  * @dest: Pointer that will recieve the value
  * @src: String that will be copiest
- *
  * Return: the pointer to dest
  */
 char *_strcpy(char *dest, char *src)
