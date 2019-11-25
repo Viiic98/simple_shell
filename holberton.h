@@ -34,6 +34,7 @@ void pipes(char*, char**);
 void ourcommands(char**, char**);
 int _strlen(char *);
 void print(char *);
+void printerr(char *, char *, char *);
 void *alloc_1(char *, char *);
 char **alloc_2(char **, char *, char*, char *);
 void _free(char **);

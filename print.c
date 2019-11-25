@@ -16,6 +16,20 @@ void print(char *str)
  * @str: string
  * Return: Number of characters
  */
+void printerr(char *str, char *ic, char *str2)
+{
+	char *err = NULL;
+	int len = 0;
+
+	len += _strlen(str);
+	len += _strlen(ic);
+	len += _strlen(str2);
+	err = malloc((len + 1) * sizeof(char *));
+	_strcpy(err, str);
+	_strcat(err, ic);
+	_strcat(err, str2);
+	write(STDERR_FILENO, err, len);
+}
 int _strlen(char *str)
 {
 	int len = 0;

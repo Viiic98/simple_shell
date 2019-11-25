@@ -53,9 +53,7 @@ void ourcommands(char **buf, char **env)
 				}
 				else if (perr == -1)
 				{
-					print("-bash: ");
-					print(icopy);
-					print(": No such file or directory\n");
+					printerr("bash: ", icopy, ": No such file or directory\n");
 				}
 			}
 			j++;
