@@ -5,7 +5,7 @@
  * @arg: arguments
  * @env: environment variables
  **/
-void path(char *ic, char **arg, char **env)
+int path(char *ic, char **arg, char **env)
 {
 	int i;
 	pid_t son;
@@ -34,10 +34,13 @@ void path(char *ic, char **arg, char **env)
 			if (son == 0)
 				execve(arg[0], arg, env);
 			wait(&son);
-			break;
+			_free(arg);
+			_free(dir);
+			return (1);
 		}
 		free(copy);
 	}
 	_free(arg);
 	_free(dir);
+	return (0);
 }

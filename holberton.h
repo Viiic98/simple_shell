@@ -25,7 +25,7 @@
 void *line(char *);
 void _env(char **);
 void _cd(char **arg, char **env);
-void path(char *, char **, char **);
+int path(char *, char **, char **);
 
 /* Other functions */
 void pipes(char*, char**);
