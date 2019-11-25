@@ -20,7 +20,7 @@ int main(int ac, char **av, char **env)
 			exit(EXIT_FAILURE);
 		}
 		buf = line(buf);
-		if (strcmp(buf, "exit\n") == 0)
+		if (_strcmp(buf, "exit\n") == 0)
 		{
 			free(buf);
 			exit(0);
