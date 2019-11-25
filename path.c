@@ -8,17 +8,14 @@
  **/
 int path(char *ic, char **arg, char **env)
 {
-	int i, int_mode = 0;
+	int i, nint_mode = 0;
 	pid_t son;
-	char *str = NULL;
-	char *copy;
-	char **dir = NULL;
+	char *str = NULL, *copy, **dir = NULL;
 	struct stat buf;
 
-
 	if (stat(ic, &buf) == 0)
-		int_mode = non_interactive(ic, arg, env);
-	if (int_mode == 0)
+		nint_mode = exe_file(ic, arg, env);
+	if (nint_mode == 0)
 	{
 		for (i = 0; env[i] != '\0'; i++)
 		{
@@ -52,10 +49,14 @@ int path(char *ic, char **arg, char **env)
 	}
 	return (1);
 }
-int non_interactive(char *ic, char **arg, char **env)
+/**
+ *
+ *
+ */
+int exe_file(char *ic, char **arg, char **env)
 {
 	int son;
-	
+
 	arg[0] = ic;
 	son = fork();
 	if (son == 0)

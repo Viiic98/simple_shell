@@ -37,7 +37,6 @@ int main(int ac, char **av, char **env)
 	{
 		buf = line(buf);
 		pipes(buf, env);
-		
 	}
 	return (0);
 }

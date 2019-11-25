@@ -23,7 +23,7 @@
 
 /* Principal functions */
 void *line(char *);
-int non_interactive(char *m, char **, char **);
+int exe_file(char *m, char **, char **);
 void _env(char **);
 void _cd(char **arg, char **env);
 int path(char *, char **, char **);
