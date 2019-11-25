@@ -1,10 +1,8 @@
 #include "holberton.h"
 /**
  * _strcmp - Function that compares two strings
- *
  * @s1: First string that will be compared
  * @s2: Second string that will be compared
- *
  * Return: Integer depends that the ASCII table
  */
 int _strcmp(char *s1, char *s2)
@@ -21,11 +19,9 @@ int _strcmp(char *s1, char *s2)
 }
 /**
  * _strncmp - Function that compares c chars between two strings
- *
  * @s1: First string that will be compared
  * @s2: Second string that will be compared
  * @c: Amount of characters
- *
  * Return: Integer depends that the ASCII table
  */
 int _strncmp(char *s1, char *s2, int c)
