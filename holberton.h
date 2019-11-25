@@ -37,4 +37,5 @@ char **alloc_2(char **, char *, char*, char *);
 void _free(char **);
 char *_strcpy(char *, char *);
 int _strcmp(char *, char *);
+int _strncmp(char *, char *, int);
 #endif
