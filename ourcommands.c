@@ -23,7 +23,7 @@ void ourcommands(char **buf, char **env)
 	char *icopy, **arg = NULL;
 	int i = 0, j, perr;
 
-	arg = alloc_2(arg, buf[0], " \n", " \n");
+	arg = alloc_2(arg, buf[0], "\"' \n", " \n");
 	i = 0;
 	ic[0] = arg[0];
 	ic[1] = NULL;
