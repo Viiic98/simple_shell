@@ -49,4 +49,5 @@ char *_get_oldpwd(char **);
 void _catch(int);
 int ferr(char *);
 char *_itoa(int, char *);
+void *verify(char *);
 #endif

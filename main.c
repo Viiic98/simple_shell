@@ -8,7 +8,7 @@
  **/
 int main(int ac, char **av, char **env)
 {
-	char *buf;
+	char *buf = NULL;
 	int fd = 0, n = 0;
 
 	if (ac > 1)
@@ -17,6 +17,8 @@ int main(int ac, char **av, char **env)
 		exit(EXIT_FAILURE);
 	}
 	buf = malloc(1024 * sizeof(char *));
+	if(!verify(buf))
+		exit(EXIT_FAILURE);
 	fd = isatty(fd);
 	if (fd == 1)
 	{
@@ -24,11 +26,6 @@ int main(int ac, char **av, char **env)
 		{
 			n++;
 			print("#cisfun$ ");
-			if (!buf)
-			{
-				print("Error allocating memory space\n");
-				exit(EXIT_FAILURE);
-			}
 			signal(SIGINT, _catch);
 			buf = line(buf);
 			if (_strcmp(buf, "exit\n") == 0)
@@ -65,6 +62,8 @@ int main(int ac, char **av, char **env)
 	{
 		buf = line(buf);
 		pipes(buf, env, n);
+		free(buf);
+		exit(0);
 	}
 	return (0);
 }
@@ -76,7 +75,7 @@ int main(int ac, char **av, char **env)
 void *line(char *buf)
 {
 	int arg = 0;
-	size_t buf_size;
+	size_t buf_size = 0;
 
 	arg = getline(&buf, &buf_size, stdin);
 	if (arg == -1)

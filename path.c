@@ -37,7 +37,6 @@ int exe_file(char *ic, char **arg, char **env)
 	if (son == 0)
 		execve(arg[0], arg, env);
 	wait(&son);
-	_free(arg);
 	return (1);
 }
 /**
@@ -61,7 +60,6 @@ int exe_command(char *ic, char **arg, char **env)
 	}
 	str = alloc_1(str, env[i]);
 	dir = alloc_2(dir, str, ":=", ":=");
-	free(str);
 	for (i = 0; dir[i] != NULL; i++)
 	{
 		copy = alloc_1(copy, dir[i]);
@@ -74,14 +72,9 @@ int exe_command(char *ic, char **arg, char **env)
 			if (son == 0)
 				execve(arg[0], arg, env);
 			wait(&son);
-			_free(arg);
-			_free(dir);
 			return (1);
 		}
-		free(copy);
 	}
-	_free(arg);
-	_free(dir);
 	return (0);
 }
 /**

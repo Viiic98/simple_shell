@@ -70,6 +70,14 @@ void _free(char **ptr)
 
 	for (i = 0; ptr[i]; i++)
 		free(ptr[i]);
-	free(ptr);
 	ptr = NULL;
+}
+void *verify(char *buf)
+{
+	if (buf == NULL)
+	{
+		write(STDERR_FILENO, "Error allocating memory\n", 24);
+		return (NULL);
+	}
+	return (buf);
 }
