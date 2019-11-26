@@ -4,20 +4,20 @@
  * @buf: line
  * @env: environment variables
  **/
-void pipes(char *buf, char **env)
+void pipes(char *buf, char **env, int n)
 {
 	char **strings = NULL;
 
 	/*parsing line*/
 	strings = alloc_2(strings, buf, DELIM, " ");
-	ourcommands(strings, env);
+	ourcommands(strings, env, n);
 }
 /**
  * ourcommands - select the right command
  * @buf: line
  * @env: environment variables
  **/
-void ourcommands(char **buf, char **env)
+void ourcommands(char **buf, char **env, int n)
 {
 	char **ic = malloc(SIZE_BUF * sizeof(char *));
 	char *icopy, **arg = NULL;
@@ -48,12 +48,11 @@ void ourcommands(char **buf, char **env)
 				perr = (path(ic[i], arg, env));
 				if (perr == 0)
 				{
-					print(icopy);
-					print(": command not found\n");
+					printerr("bash: ", n, icopy, ": not found\n");
 				}
 				else if (perr == -1)
 				{
-					printerr("bash: ", icopy, ": No such file or directory\n");
+					printerr("bash: ", n, icopy, ": No such file or directory\n");
 				}
 			}
 			j++;

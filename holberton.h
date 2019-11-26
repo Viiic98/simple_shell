@@ -16,6 +16,7 @@
 #include <sys/wait.h>
 #include <sys/time.h>
 #include <sys/resource.h>
+#include <string.h>
 
 /* MACROS */
 #define DELIM "|\n"
@@ -30,11 +31,11 @@ void _cd(char **, char **);
 int path(char *, char **, char **);
 
 /* Other functions */
-void pipes(char*, char**);
-void ourcommands(char**, char**);
+void pipes(char*, char**, int);
+void ourcommands(char**, char**, int);
 int _strlen(char *);
 void print(char *);
-void printerr(char *, char *, char *);
+void printerr(char *, int, char *, char *);
 void *alloc_1(char *, char *);
 char **alloc_2(char **, char *, char*, char *);
 void _free(char **);
@@ -47,4 +48,5 @@ char *_get_home(char **);
 char *_get_oldpwd(char **);
 void _catch(int);
 int ferr(char *);
+char *_itoa(int, char *);
 #endif

@@ -10,7 +10,7 @@ int main(int ac, char **av, char **env)
 {
 	char *buf;
 	char *status;
-	int fd = 0, i, j;
+	int fd = 0, i, j, n = 0;
 
 	if (ac > 1)
 	{
@@ -23,6 +23,7 @@ int main(int ac, char **av, char **env)
 	{
 		while (1)
 		{
+			n++;
 			print("#cisfun$ ");
 			if (!buf)
 			{
@@ -36,7 +37,7 @@ int main(int ac, char **av, char **env)
 				free(buf);
 				exit(0);
 			}
-			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
+/*			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
 			{
 				if (buf[5] >= 48 && buf[5] <= 57)
 				{
@@ -57,14 +58,14 @@ int main(int ac, char **av, char **env)
 					exit(0);
 				}
 			}						
-			if (buf[0] != '\n')
-				pipes(buf, env);
+*/			if (buf[0] != '\n')
+				pipes(buf, env, n);
 		}
 	}
 	else
 	{
 		buf = line(buf);
-		pipes(buf, env);
+		pipes(buf, env, n);
 	}
 	return (0);
 }
