@@ -9,8 +9,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *buf;
-	char *status;
-	int fd = 0, i, j, n = 0;
+	int fd = 0, n = 0;
 
 	if (ac > 1)
 	{
