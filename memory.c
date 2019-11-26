@@ -43,7 +43,7 @@ char **alloc_2(char **ptr, char *buf, char *delim, char *darg)
 			narg++;
 		i++;
 	}
-	ptr = malloc((narg + 1) * sizeof(char *) + 1);
+	ptr = malloc((narg + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (NULL);
 	i = 0;
@@ -51,7 +51,7 @@ char **alloc_2(char **ptr, char *buf, char *delim, char *darg)
 	while (arg)
 	{
 		len = _strlen(arg);
-		ptr[i] = malloc((len + 1) * sizeof(char *) + 1);
+		ptr[i] = malloc((len + 1) * sizeof(char *));
 		_strcpy(ptr[i], arg);
 		arg = strtok(NULL, delim);
 		i++;
@@ -69,7 +69,10 @@ void _free(char **ptr)
 	int i;
 
 	for (i = 0; ptr[i]; i++)
+	{
 		free(ptr[i]);
+		ptr[i] = NULL;
+	}
 	ptr = NULL;
 }
 void *verify(char *buf)

@@ -16,9 +16,6 @@ int main(int ac, char **av, char **env)
 		print(av[0]);
 		exit(EXIT_FAILURE);
 	}
-	buf = malloc(1024 * sizeof(char *));
-	if(!verify(buf))
-		exit(EXIT_FAILURE);
 	fd = isatty(fd);
 	if (fd == 1)
 	{
@@ -37,9 +34,8 @@ int main(int ac, char **av, char **env)
 			{
 				if (buf[5] >= 48 && buf[5] <= 57)
 				{
-					for (i = 5; buf[i] != '\n'; i++)
-						;
-					status = malloc((i + 1) * sizeof(char));
+					for (i = 5; buf[i] != '\n'; i++);
+					status = malloc(sizeof(char *));
 					if (status != NULL)
 					{
 						for (i = 5, j = 0; buf[i] != '\n'; i++, j++)
@@ -47,6 +43,7 @@ int main(int ac, char **av, char **env)
 						status[j] =  '\0';
 						k = _atoi(j, status);
 						printf("atoi %d", k);
+						free(status);
 						exit(k);
 					}
 				}
@@ -57,6 +54,7 @@ int main(int ac, char **av, char **env)
 			}						
 			if (buf[0] != '\n')
 				pipes(buf, env, n);
+			free(buf);
 		}
 	}
 	else
@@ -78,6 +76,9 @@ void *line(char *buf)
 	int arg = 0;
 	size_t buf_size = 0;
 
+	buf = malloc(sizeof(char *));
+	if(!verify(buf))
+		exit(EXIT_FAILURE);
 	arg = getline(&buf, &buf_size, stdin);
 	if (arg == -1)
 	{

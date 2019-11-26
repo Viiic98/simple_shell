@@ -40,4 +40,5 @@ int _atoi(int i, char* buf)
 		return (res - 256);
 	if (res < 256)
 		return (res);
+	return (0);
 }
