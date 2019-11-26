@@ -48,7 +48,7 @@ int exe_file(char *ic, char **arg, char **env)
  */
 int exe_command(char *ic, char **arg, char **env)
 {
-	int i;
+	int i, nargs;
 	pid_t son;
 	char *str = NULL, *copy = NULL, **dir = NULL;
 	struct stat buf;
@@ -59,7 +59,8 @@ int exe_command(char *ic, char **arg, char **env)
 			break;
 	}
 	str = alloc_1(str, env[i]);
-	dir = alloc_2(dir, str, ":=", ":=");
+	nargs = n_args(str, ":");
+	dir = alloc_2(dir, str, ":=", (nargs + 1));
 	free(str);
 	for (i = 0; dir[i] != NULL; i++)
 	{

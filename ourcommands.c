@@ -7,9 +7,10 @@
 void pipes(char *buf, char **env, int n)
 {
 	char **strings = NULL;
-
+	int nargs;
 	/*parsing line*/
-	strings = alloc_2(strings, buf, DELIM, " ");
+	nargs = n_args(buf, " ");
+	strings = alloc_2(strings, buf, DELIM, nargs);
 	ourcommands(strings, env, n);
 }
 /**
@@ -19,14 +20,12 @@ void pipes(char *buf, char **env, int n)
  **/
 void ourcommands(char **buf, char **env, int n)
 {
-	char *ic = malloc(sizeof(char *));
+	char *ic = NULL;
 	char *icopy = NULL, **arg = NULL;
 	int i, perr;
 
-	arg = alloc_2(arg, buf[0], "\"' \n", " \n");
-	i = 0;
-	ic = arg[0];
-	
+	arg = alloc_2(arg, buf[0], "\"' \n", 0);
+	ic = alloc_1(ic, arg[0]);
 	icopy = alloc_1(icopy, ic);
 	i = 0;
 	while (i <= 2)
@@ -50,6 +49,7 @@ void ourcommands(char **buf, char **env, int n)
 			}
 			else if (perr == -1)
 			{
+				/*Here must be the permission error*/
 				printerr("bash: ", n, icopy, ": not found\n");
 			}
 		}
