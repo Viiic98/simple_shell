@@ -99,6 +99,10 @@ int ferr(char *ic)
 		ferr++;
 	}
 	if (ferr >= 2)
+	{
+		free(copy);
 		return (-1);
+	}
+	free(copy);
 	return (0);
 }

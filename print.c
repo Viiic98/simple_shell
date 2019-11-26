@@ -35,6 +35,7 @@ void printerr(char *str, int n, char *ic, char *str2)
 	_strcat(err, ic);
 	_strcat(err, str2);
 	write(STDERR_FILENO, err, len);
+	free(err);
 }
 int _strlen(char *str)
 {

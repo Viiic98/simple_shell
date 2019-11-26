@@ -19,48 +19,42 @@ void pipes(char *buf, char **env, int n)
  **/
 void ourcommands(char **buf, char **env, int n)
 {
-	char **ic = malloc(SIZE_BUF * sizeof(char *));
-	char *icopy, **arg = NULL;
-	int i = 0, j, perr;
+	char *ic = malloc(sizeof(char *));
+	char *icopy = NULL, **arg = NULL;
+	int i, perr;
 
 	arg = alloc_2(arg, buf[0], "\"' \n", " \n");
 	i = 0;
-	ic[0] = arg[0];
-	ic[1] = NULL;
-	while (ic[i])
+	ic = arg[0];
+	
+	icopy = alloc_1(icopy, ic);
+	i = 0;
+	while (i <= 2)
 	{
-		icopy = alloc_1(icopy, ic[i]);
-		j = 0;
-		while (j <= 2)
+		if (i == 0 && strcmp(ic, "cd") == 0)
 		{
-			if (j == 0 && strcmp(ic[i], "cd") == 0)
-			{
-				_cd(arg, env);
-				break;
-			}
-			else if (j == 1 && strcmp(ic[i], "env") == 0)
-			{
-				_env(env);
-				break;
-			}
-			else if (j == 2)
-			{
-				perr = (path(ic[i], arg, env));
-				if (perr == 0)
-				{
-					printerr("bash: ", n, icopy, ": not found\n");
-				}
-				else if (perr == -1)
-				{
-					printerr("bash: ", n, icopy, ": not found\n");
-				}
-			}
-			j++;
+			_cd(arg, env);
+			break;
 		}
-		free(icopy);
+		else if (i == 1 && strcmp(ic, "env") == 0)
+		{
+			_env(env);
+			break;
+		}
+		else if (i == 2)
+		{
+			perr = (path(ic, arg, env));
+			if (perr == 0)
+			{
+				printerr("bash: ", n, icopy, ": not found\n");
+			}
+			else if (perr == -1)
+			{
+				printerr("bash: ", n, icopy, ": not found\n");
+			}
+		}
 		i++;
 	}
 	_free(buf);
 	_free(arg);
-	free(ic);
 }
