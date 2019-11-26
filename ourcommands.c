@@ -52,7 +52,7 @@ void ourcommands(char **buf, char **env, int n)
 				}
 				else if (perr == -1)
 				{
-					printerr("bash: ", n, icopy, ": No such file or directory\n");
+					printerr("bash: ", n, icopy, ": not found\n");
 				}
 			}
 			j++;
