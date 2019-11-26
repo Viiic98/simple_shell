@@ -9,7 +9,7 @@ void _cd(char **arg, char **env)
 {
 	int status;
 	char *str = '\0', *str2 = '\0', *str3 = '\0', *str_old = '\0';
-	
+
 	str_old = _get_cwd();
 	if (arg[1] == NULL)
 	{
@@ -43,7 +43,7 @@ void _cd(char **arg, char **env)
 	}
 }
 /**
- * _get_oldp - function old path
+ * _get_cwd - function current path
  * Return: the current path
  **/
 char *_get_cwd(void)
@@ -64,7 +64,7 @@ char *_get_home(char **env)
 {
 	char *str = NULL;
 	int i;
-	
+
 	for (i = 0; env[i] != '\0'; i++)
 		if (_strncmp(env[i], "HOME", 4) == 0)
 			break;
@@ -76,7 +76,7 @@ char *_get_home(char **env)
 /**
  * _get_oldpwd - function path oldpwd
  * @env: environment variables
- * Return : the last path
+ * Return: the last path
  **/
 char *_get_oldpwd(char **env)
 {
