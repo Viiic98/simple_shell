@@ -50,4 +50,5 @@ void _catch(int);
 int ferr(char *);
 char *_itoa(int, char *);
 void *verify(char *);
+int _atoi(int, char *);
 #endif
