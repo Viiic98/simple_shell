@@ -8,7 +8,7 @@
 void _cd(char **arg, char **env)
 {
 	int status;
-	char *str, *str2, *str3, *str_old;
+	char *str = '\0', *str2 = '\0', *str3 = '\0', *str_old = '\0';
 	
 	str_old = _get_cwd();
 	if (arg[1] == NULL)
@@ -18,7 +18,7 @@ void _cd(char **arg, char **env)
 		setenv("PWD", _get_cwd(), 1);
 		setenv("OLDPWD", str_old, 1);
 	}
-	else if ((_strcmp(arg[1], "-") == 0) && arg[1] != NULL)
+	else if ((_strcmp(arg[1], "-") == 0))
 	{
 		str2 = _get_oldpwd(env);
 		chdir(str2);
