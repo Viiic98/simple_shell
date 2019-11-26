@@ -50,7 +50,7 @@ int exe_command(char *ic, char **arg, char **env)
 {
 	int i;
 	pid_t son;
-	char *str = NULL, *copy, **dir = NULL;
+	char *str = NULL, *copy = NULL, **dir = NULL;
 	struct stat buf;
 
 	for (i = 0; env[i] != '\0'; i++)
@@ -60,6 +60,7 @@ int exe_command(char *ic, char **arg, char **env)
 	}
 	str = alloc_1(str, env[i]);
 	dir = alloc_2(dir, str, ":=", ":=");
+	free(str);
 	for (i = 0; dir[i] != NULL; i++)
 	{
 		copy = alloc_1(copy, dir[i]);
@@ -72,9 +73,12 @@ int exe_command(char *ic, char **arg, char **env)
 			if (son == 0)
 				execve(arg[0], arg, env);
 			wait(&son);
+			_free(dir);
 			return (1);
 		}
+		free(copy);
 	}
+	_free(dir);
 	return (0);
 }
 /**

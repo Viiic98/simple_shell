@@ -57,6 +57,10 @@ void ourcommands(char **buf, char **env, int n)
 			}
 			j++;
 		}
+		free(icopy);
 		i++;
 	}
+	_free(buf);
+	_free(arg);
+	free(ic);
 }
