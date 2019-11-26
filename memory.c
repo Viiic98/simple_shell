@@ -73,6 +73,7 @@ void _free(char **ptr)
 		free(ptr[i]);
 		ptr[i] = NULL;
 	}
+	free(ptr);
 	ptr = NULL;
 }
 void *verify(char *buf)
