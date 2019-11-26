@@ -37,7 +37,7 @@ int _strlen(char *);
 void print(char *);
 void printerr(char *, int, char *, char *);
 void *alloc_1(char *, char *);
-char **alloc_2(char **, char *, char*, char *);
+char **alloc_2(char **, char *, char*, int);
 void _free(char **);
 char *_strcpy(char *, char *);
 int _strcmp(char *, char *);
@@ -51,4 +51,5 @@ int ferr(char *);
 char *_itoa(int, char *);
 void *verify(char *);
 int _atoi(int, char *);
+int n_args(char *, char *);
 #endif
