@@ -9,7 +9,8 @@
 int main(int ac, char **av, char **env)
 {
 	char *buf;
-	int fd = 0;
+	char *status;
+	int fd = 0, i, j;
 
 	if (ac > 1)
 	{
@@ -35,6 +36,27 @@ int main(int ac, char **av, char **env)
 				free(buf);
 				exit(0);
 			}
+			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
+			{
+				if (buf[5] >= 48 && buf[5] <= 57)
+				{
+					for (i = 5; buf[i] != '\n'; i++)
+						;
+					status = malloc((i + 1) * sizeof(char));
+					if (status != NULL)
+					{
+						for (i = 5, j = 0; buf[i] != '\n'; i++, j++)
+							status[j] = buf[i];
+						status[j] =  '\0';
+						_atoi(j, status);
+						exit(98);
+					}
+				}
+				else
+				{	
+					exit(0);
+				}
+			}						
 			if (buf[0] != '\n')
 				pipes(buf, env);
 		}
