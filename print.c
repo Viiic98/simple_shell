@@ -19,12 +19,14 @@ void print(char *str)
 void printerr(char *str, int n, char *ic, char *str2)
 {
 	char *err = NULL, *num = malloc(sizeof(char *)), *a;
-	int len = 3;
+	int len = 0;
 
 	a = ": ";
 	_itoa(n, num);
 	len += _strlen(str);
+	len += _strlen(num);
 	len += _strlen(ic);
+	len += _strlen(a);
 	len += _strlen(str2);
 	err = malloc((len + 1) * sizeof(char *));
 	_strcpy(err, str);

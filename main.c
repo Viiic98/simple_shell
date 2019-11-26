@@ -76,9 +76,10 @@ void *line(char *buf)
 	int arg = 0;
 	size_t buf_size = 0;
 
-	buf = malloc(sizeof(char *));
+	/*buf = malloc(sizeof(char *));
 	if(!verify(buf))
 		exit(EXIT_FAILURE);
+	*/
 	arg = getline(&buf, &buf_size, stdin);
 	if (arg == -1)
 	{
