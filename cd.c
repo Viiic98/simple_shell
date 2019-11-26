@@ -8,16 +8,17 @@
 void _cd(char **arg, char **env)
 {
 	int status;
-	char *str = NULL, *str2, *str3, *str_old;
-
+	char *str, *str2, *str3, *str_old;
+	
 	str_old = _get_cwd();
 	if (arg[1] == NULL)
 	{
+		str = _get_home(env);
 		chdir(str);
 		setenv("PWD", _get_cwd(), 1);
 		setenv("OLDPWD", str_old, 1);
 	}
-	if (_strcmp(arg[1], "-") == 0)
+	else if ((_strcmp(arg[1], "-") == 0) && arg[1] != NULL)
 	{
 		str2 = _get_oldpwd(env);
 		chdir(str2);
@@ -61,13 +62,14 @@ char *_get_cwd(void)
  **/
 char *_get_home(char **env)
 {
-	char *str;
+	char *str = NULL;
 	int i;
-
+	
 	for (i = 0; env[i] != '\0'; i++)
 		if (_strncmp(env[i], "HOME", 4) == 0)
 			break;
-	str = strtok(env[i], "=");
+	str = alloc_1(str, env[i]);
+	str = strtok(str, "=");
 	str = strtok(NULL, "=");
 	return (str);
 }
@@ -89,4 +91,3 @@ char *_get_oldpwd(char **env)
 	str2 = strtok(NULL, "=");
 	return (str2);
 }
-
