@@ -10,9 +10,9 @@ void *alloc_1(char *ptr, char *str)
 	int len;
 
 	len = _strlen(str);
-	ptr = malloc(len * sizeof(char *) + 1);
-	if (ptr == NULL)
-		return (NULL);
+	ptr = malloc(len * sizeof(char *));
+	if(!verify(ptr))
+		exit(EXIT_FAILURE);
 	_strcpy(ptr, str);
 
 	return (ptr);
@@ -25,33 +25,30 @@ void *alloc_1(char *ptr, char *str)
  * @ptr: double pointer that will be initialized
  * Return: double pointer allocated
  */
-char **alloc_2(char **ptr, char *buf, char *delim, char *darg)
+char **alloc_2(char **ptr, char *buf, char *delim, int n_arg)
 {
-	char *arg;
-	int len, narg = 1, i = 0;
+	char *arg = NULL;
+	int len, i = 0;
 
 	if (buf == NULL)
 	{
 		print("Invalid number of arguments");
 		return (NULL);
 	}
-	while (buf[i])
-	{
-		if (buf[i] == darg[0])
-			narg++;
-		else if (buf[i] == darg[1])
-			narg++;
-		i++;
-	}
-	ptr = malloc((narg + 1) * sizeof(char *));
-	if (ptr == NULL)
-		return (NULL);
 	i = 0;
+	ptr = malloc((n_arg + 1) * sizeof(char *));
+	if(!verify(buf))
+		exit(EXIT_FAILURE);
 	arg = strtok(buf, delim);
 	while (arg)
 	{
 		len = _strlen(arg);
 		ptr[i] = malloc((len + 1) * sizeof(char *));
+		if(!verify(buf))
+		{
+			free(ptr);
+			exit(EXIT_FAILURE);
+		}
 		_strcpy(ptr[i], arg);
 		arg = strtok(NULL, delim);
 		i++;
@@ -84,4 +81,21 @@ void *verify(char *buf)
 		return (NULL);
 	}
 	return (buf);
+}
+int n_args(char *buf, char *delim)
+{
+	int narg = 1, i = 0, j;
+
+	while (buf[i])
+	{
+		j = 0;
+		while(delim[j])
+		{
+			if (buf[i] == delim[j])
+				narg++;
+			j++;
+		}
+		i++;
+	}
+	return (narg);
 }
