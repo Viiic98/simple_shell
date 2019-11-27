@@ -3,6 +3,7 @@
  * pipes - separates line with pipes
  * @buf: line
  * @env: environment variables
+ * @n: amount lines
  **/
 void pipes(char *buf, char **env, int n)
 {
@@ -17,6 +18,7 @@ void pipes(char *buf, char **env, int n)
  * ourcommands - select the right command
  * @buf: line
  * @env: environment variables
+ * @n: amount lines
  **/
 void ourcommands(char **buf, char **env, int n)
 {
