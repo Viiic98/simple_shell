@@ -8,17 +8,14 @@
  **/
 int path(char *ic, char **arg, char **env)
 {
-	int nint_mode = 0;
-	struct stat buf;
+	struct stat stat_f = {0};
 
-	if (stat(ic, &buf) == 0)
+	stat(ic, &stat_f);
+	if ((stat_f.st_mode & S_IFMT) == S_IFDIR)
+		return (126);
+	else if (stat(ic, &stat_f) == 0)
 		return (exe_file(ic, arg, env));
-	nint_mode = ferr(ic);
-	if (nint_mode == 0)
-	{
-		return (exe_command(ic, arg, env));
-	}
-	return (nint_mode);
+	return (exe_command(ic, arg, env));
 }
 /**
  * exe_file - Execute a file that exists in path
@@ -90,18 +87,8 @@ int exe_command(char *ic, char **arg, char **env)
 int ferr(char *ic)
 {
 	int ferr = 0;
-	char *copy = NULL, *fcopy = NULL;
 
-	copy = alloc_1(copy, ic);
-	fcopy = copy;
-	copy = strtok(copy, "/");
-	while (copy)
-	{
-		copy = strtok(NULL, "/");
-		ferr++;
-	}
-	free(fcopy);
-	if (ferr >= 2)
-		return (127);
-	return (0);
+	ferr = access(ic, X_OK);
+
+	return (ferr);
 }
