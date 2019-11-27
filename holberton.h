@@ -30,8 +30,8 @@ void _cd(char **, char **);
 int path(char *, char **, char **);
 
 /* Other functions */
-void pipes(char*, char**, int);
-void ourcommands(char**, char**, int);
+int pipes(char*, char**, int);
+int ourcommands(char**, char**, int);
 int _strlen(char *);
 void print(char *);
 void printerr(char *, int, char *, char *);

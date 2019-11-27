@@ -9,7 +9,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *buf = NULL;
-	int fd = 0, n = 0;
+	int fd = 0, n = 0, status = 0;
 
 	if (ac > 1)
 	{
@@ -23,28 +23,23 @@ int main(int ac, char **av, char **env)
 		{
 			n++;
 			dprintf(STDOUT_FILENO, "#cisfun$ ");
-			signal(SIGINT, _catch);
 			buf = line(buf);
 			if (_strcmp(buf, "exit\n") == 0)
 			{
 				free(buf);
 				exit(0);
 			}
-			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
-			{
-				_exit_arg(buf);
-			}
 			if (buf[0] != '\n')
-				pipes(buf, env, n);
+				status = pipes(buf, env, n);
 			free(buf);
 		}
 	}
 	else
 	{
 		buf = line(buf);
-		pipes(buf, env, n);
+		status = pipes(buf, env, 1);
 		free(buf);
-		exit(0);
+		exit(status);
 	}
 	return (0);
 }

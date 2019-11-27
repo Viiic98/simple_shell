@@ -81,7 +81,7 @@ int exe_command(char *ic, char **arg, char **env)
 		free(copy);
 	}
 	_free(dir);
-	return (0);
+	return (127);
 }
 /**
  * ferr - check if its a directory
@@ -103,6 +103,6 @@ int ferr(char *ic)
 	}
 	free(fcopy);
 	if (ferr >= 2)
-		return (-1);
+		return (127);
 	return (0);
 }

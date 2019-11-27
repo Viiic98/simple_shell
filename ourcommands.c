@@ -5,25 +5,29 @@
  * @buf: line
  * @env: environment variables
  * @n: amount lines
+ * Return: command status
  **/
-void pipes(char *buf, char **env, int n)
+int pipes(char *buf, char **env, int n)
 {
 	char **strings = NULL;
+	int status = 0;
 	/*parsing line*/
 	strings = alloc_2(strings, buf, DELIM);
-	ourcommands(strings, env, n);
+	status = ourcommands(strings, env, n);
 	_free(strings);
+	return (status);
 }
 /**
  * ourcommands - select the right command
  * @buf: line
  * @env: environment variables
  * @n: amount lines
+ * Return: command status
  **/
-void ourcommands(char **buf, char **env, int n)
+int ourcommands(char **buf, char **env, int n)
 {
 	char **arg = NULL, *ic = NULL, *icopy = NULL;
-	int i, perr;
+	int i, status = 0;
 
 	arg = alloc_2(arg, buf[0], "\"' \n");
 	ic = alloc_1(ic, arg[0]);
@@ -43,15 +47,16 @@ void ourcommands(char **buf, char **env, int n)
 		}
 		else if (i == 2)
 		{
-			perr = (path(ic, arg, env));
-			if (perr == 0)
+			status = (path(ic, arg, env));
+			if (status == 127)
 				dprintf(STDERR_FILENO, "bash: %d: %s: not found\n", n, icopy);
-			else if (perr == -1)
-				dprintf(STDERR_FILENO, "printerror\n");
+			else if (status == -1)
+				dprintf(STDERR_FILENO, "bash: %d: %s: not found\n", n, icopy);
 		}
 		i++;
 	}
 	free(icopy);
 	free(ic);
 	_free(arg);
+	return (status);
 }
