@@ -58,5 +58,5 @@ void ourcommands(char **buf, char **env, int n)
 		i++;
 	}
 	_free(buf);
-	_free(arg);
+
 }
