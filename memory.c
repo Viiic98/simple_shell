@@ -12,7 +12,7 @@ void *alloc_1(char *ptr, char *str)
 	len = _strlen(str);
 	ptr = malloc(len * sizeof(char *));
 	if (!verify(ptr))
-		exit(EXIT_FAILURE);
+		exit(0);
 	_strcpy(ptr, str);
 
 	return (ptr);

@@ -14,7 +14,7 @@ int main(int ac, char **av, char **env)
 	if (ac > 1)
 	{
 		print(av[0]);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	fd = isatty(fd);
 	if (fd == 1)
@@ -88,8 +88,7 @@ void _exit_arg(char *buf)
 
 	if (buf[5] >= 48 && buf[5] <= 57)
 	{
-		for (i = 5; buf[i] != '\n'; i++)
-			;
+		for (i = 5; buf[i] != '\n'; i++);
 		status = malloc(sizeof(char *));
 		if (status != NULL)
 		{
