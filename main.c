@@ -24,7 +24,7 @@ int main(int ac, char **av, char **env)
 			dprintf(STDOUT_FILENO, "#cisfun$ ");
 		buf = line(buf);
 		if (buf == NULL)
-			exit(n);
+			exit(status);
 		if (veri_buf(buf) == 1)
 		{
 			if (_strcmp(buf, "exit\n") == 0)
