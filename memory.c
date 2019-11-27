@@ -7,47 +7,41 @@
  */
 void *alloc_1(char *ptr, char *str)
 {
-	int len;
-
-	len = _strlen(str);
-	ptr = malloc(len * sizeof(char *));
+	ptr = malloc(SIZE_BUF * sizeof(char *));
 	if (!verify(ptr))
 		exit(0);
 	_strcpy(ptr, str);
-
 	return (ptr);
 }
 /**
  * alloc_2 - allocate memory to double pointers
- * @n_arg: delimiter to how many args will have
  * @delim: delim for every arg
  * @buf: buffer
  * @ptr: double pointer that will be initialized
  * Return: double pointer allocated
  */
-char **alloc_2(char **ptr, char *buf, char *delim, int n_arg)
+char **alloc_2(char **ptr, char *buf, char *delim)
 {
 	char *arg = NULL;
-	int len, i = 0;
+	int i = 0;
 
 	if (buf == NULL)
 	{
-		print("Invalid number of arguments");
+		dprintf(STDERR_FILENO, "Invalid number of arguments\n");
 		return (NULL);
 	}
 	i = 0;
-	ptr = malloc((n_arg + 1) * sizeof(char *));
+	ptr = malloc(SIZE_BUF * sizeof(char));
 	if (!verify(buf))
-		exit(EXIT_FAILURE);
+		return (NULL);
 	arg = strtok(buf, delim);
 	while (arg)
 	{
-		len = _strlen(arg);
-		ptr[i] = malloc((len + 1) * sizeof(char *));
+		ptr[i] = malloc(SIZE_BUF * sizeof(char *));
 		if (!verify(buf))
 		{
 			free(ptr);
-			exit(EXIT_FAILURE);
+			return (NULL);
 		}
 		_strcpy(ptr[i], arg);
 		arg = strtok(NULL, delim);
@@ -82,7 +76,7 @@ void *verify(char *buf)
 {
 	if (buf == NULL)
 	{
-		write(STDERR_FILENO, "Error allocating memory\n", 24);
+		dprintf(STDERR_FILENO, "Error allocating memory\n");
 		return (NULL);
 	}
 	return (buf);

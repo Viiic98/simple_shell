@@ -32,7 +32,7 @@ int exe_file(char *ic, char **arg, char **env)
 {
 	int son;
 
-	arg[0] = ic;
+	_strcpy(arg[0], ic);
 	son = fork();
 	if (son == 0)
 		execve(arg[0], arg, env);
@@ -48,7 +48,7 @@ int exe_file(char *ic, char **arg, char **env)
  */
 int exe_command(char *ic, char **arg, char **env)
 {
-	int i, nargs;
+	int i;
 	pid_t son;
 	char *str = NULL, *copy = NULL, **dir = NULL;
 	struct stat buf;
@@ -59,9 +59,9 @@ int exe_command(char *ic, char **arg, char **env)
 			break;
 	}
 	str = alloc_1(str, env[i]);
-	nargs = n_args(str, ":");
-	dir = alloc_2(dir, str, ":=", (nargs + 1));
+	dir = alloc_2(dir, str, ":=");
 	free(str);
+
 	for (i = 0; dir[i] != NULL; i++)
 	{
 		copy = alloc_1(copy, dir[i]);
@@ -69,11 +69,12 @@ int exe_command(char *ic, char **arg, char **env)
 		_strcat(copy, ic);
 		if (stat(copy, &buf) == 0)
 		{
-			arg[0] = copy;
+			_strcpy(arg[0], copy);
 			son = fork();
 			if (son == 0)
 				execve(arg[0], arg, env);
 			wait(&son);
+			free(copy);
 			_free(dir);
 			return (1);
 		}
@@ -90,20 +91,18 @@ int exe_command(char *ic, char **arg, char **env)
 int ferr(char *ic)
 {
 	int ferr = 0;
-	char *copy = NULL;
+	char *copy = NULL, *fcopy = NULL;
 
 	copy = alloc_1(copy, ic);
+	fcopy = copy;
 	copy = strtok(copy, "/");
 	while (copy)
 	{
 		copy = strtok(NULL, "/");
 		ferr++;
 	}
+	free(fcopy);
 	if (ferr >= 2)
-	{
-		free(copy);
 		return (-1);
-	}
-	free(copy);
 	return (0);
 }

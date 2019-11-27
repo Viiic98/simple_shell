@@ -13,7 +13,7 @@ int main(int ac, char **av, char **env)
 
 	if (ac > 1)
 	{
-		print(av[0]);
+		dprintf(STDOUT_FILENO, "Can't execute the shell %s\n", av[0]);
 		exit(0);
 	}
 	fd = isatty(fd);
@@ -22,19 +22,19 @@ int main(int ac, char **av, char **env)
 		while (1)
 		{
 			n++;
-			print("#cisfun$ ");
-/*			signal(SIGINT, _catch);
- */			buf = line(buf);
+			dprintf(STDOUT_FILENO, "#cisfun$ ");
+			signal(SIGINT, _catch);
+			buf = line(buf);
 			if (_strcmp(buf, "exit\n") == 0)
 			{
 				free(buf);
 				exit(0);
 			}
-/*			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
+			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
 			{
 				_exit_arg(buf);
 			}
-*/			if (buf[0] != '\n')
+			if (buf[0] != '\n')
 				pipes(buf, env, n);
 			free(buf);
 		}
@@ -61,7 +61,7 @@ void *line(char *buf)
 	arg = getline(&buf, &buf_size, stdin);
 	if (arg == -1)
 	{
-		print("Error getting the value\n");
+		dprintf(STDERR_FILENO, "Error getting the value\n");
 		return (NULL);
 	}
 	return (buf);
@@ -74,8 +74,7 @@ void *line(char *buf)
 void _catch(int signal)
 {
 	signal = signal * 1;
-	print("\n");
-	print("#cisfun$ ");
+	dprintf(STDOUT_FILENO, "\n#cisfun$ ");
 }
 /**
  * _exit_arg - function exit with status argument
@@ -88,7 +87,8 @@ void _exit_arg(char *buf)
 
 	if (buf[5] >= 48 && buf[5] <= 57)
 	{
-		for (i = 5; buf[i] != '\n'; i++);
+		for (i = 5; buf[i] != '\n'; i++)
+			;
 		status = malloc(sizeof(char *));
 		if (status != NULL)
 		{

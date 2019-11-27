@@ -1,3 +1,4 @@
+
 #include "holberton.h"
 /**
  * pipes - separates line with pipes
@@ -8,11 +9,10 @@
 void pipes(char *buf, char **env, int n)
 {
 	char **strings = NULL;
-	int nargs;
 	/*parsing line*/
-	nargs = n_args(buf, " ");
-	strings = alloc_2(strings, buf, DELIM, nargs);
+	strings = alloc_2(strings, buf, DELIM);
 	ourcommands(strings, env, n);
+	_free(strings);
 }
 /**
  * ourcommands - select the right command
@@ -22,11 +22,10 @@ void pipes(char *buf, char **env, int n)
  **/
 void ourcommands(char **buf, char **env, int n)
 {
-	char *ic = NULL;
-	char *icopy = NULL, **arg = NULL;
+	char **arg = NULL, *ic = NULL, *icopy = NULL;
 	int i, perr;
 
-	arg = alloc_2(arg, buf[0], "\"' \n", 0);
+	arg = alloc_2(arg, buf[0], "\"' \n");
 	ic = alloc_1(ic, arg[0]);
 	icopy = alloc_1(icopy, ic);
 	i = 0;
@@ -46,17 +45,13 @@ void ourcommands(char **buf, char **env, int n)
 		{
 			perr = (path(ic, arg, env));
 			if (perr == 0)
-			{
-				printerr("bash: ", n, icopy, ": not found\n");
-			}
+				dprintf(STDERR_FILENO, "bash: %d: %s: not found\n", n, icopy);
 			else if (perr == -1)
-			{
-				/*Here must be the permission error*/
-				printerr("bash: ", n, icopy, ": not found\n");
-			}
+				dprintf(STDERR_FILENO, "printerror\n");
 		}
 		i++;
 	}
-	_free(buf);
-
+	free(icopy);
+	free(ic);
+	_free(arg);
 }
