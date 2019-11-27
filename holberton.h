@@ -2,7 +2,6 @@
 #define SIMPLE_SHELL
 
 /* Libraries */
-
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -52,4 +51,5 @@ char *_itoa(int, char *);
 void *verify(char *);
 int _atoi(int, char *);
 int n_args(char *, char *);
+void _exit_arg(char *);
 #endif
