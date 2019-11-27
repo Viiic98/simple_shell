@@ -8,8 +8,8 @@
  **/
 int main(int ac, char **av, char **env)
 {
-	char *buf = NULL, *status = NULL;
-	int fd = 0, n = 0, i, j, k;
+	char *buf = NULL;
+	int fd = 0, n = 0;
 
 	if (ac > 1)
 	{
@@ -32,7 +32,8 @@ int main(int ac, char **av, char **env)
 			}
 			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
 			{
-				if (buf[5] >= 48 && buf[5] <= 57)
+				_exit_arg(buf);
+			/*	if (buf[5] >= 48 && buf[5] <= 57)
 				{
 					for (i = 5; buf[i] != '\n'; i++);
 					status = malloc(sizeof(char *));
@@ -42,7 +43,6 @@ int main(int ac, char **av, char **env)
 							status[j] = buf[i];
 						status[j] =  '\0';
 						k = _atoi(j, status);
-						printf("atoi %d", k);
 						free(status);
 						exit(k);
 					}
@@ -50,7 +50,7 @@ int main(int ac, char **av, char **env)
 				else
 				{	
 					exit(0);
-				}
+				}*/
 			}						
 			if (buf[0] != '\n')
 				pipes(buf, env, n);
@@ -94,4 +94,34 @@ void _catch(int signal)
 	signal = signal * 1;
 	print("\n");
 	print("#cisfun$ ");
+}
+/**
+ * _exit_arg - function exit with status argument
+ * @buf: pointer to buffer
+ **/
+void _exit_arg(char *buf)
+{
+	int i, j;
+	char *status;
+
+	if (buf[5] >= 48 && buf[5] <= 57)
+	{
+		for (i = 5; buf[i] != '\n'; i++)
+			;
+		status = malloc(sizeof(char *));
+		if (status != NULL)
+		{
+			for (i = 5, j = 0; buf[i] != '\n'; i++, j++)
+				status[j] = buf[i];
+			status[j] =  '\0';
+			i = 0;
+			i = _atoi(j, status);
+			free(status);
+			exit(i);
+		}
+	}
+	else
+	{	
+		exit(0);
+	}
 }
