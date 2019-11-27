@@ -12,9 +12,8 @@ int path(char *ic, char **arg, char **env)
 	struct stat buf;
 
 	if (stat(ic, &buf) == 0)
-		return(exe_file(ic, arg, env));
-	else
-		nint_mode = ferr(ic);
+		return (exe_file(ic, arg, env));
+	nint_mode = ferr(ic);
 	if (nint_mode == 0)
 	{
 		return (exe_command(ic, arg, env));
