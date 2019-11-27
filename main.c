@@ -17,32 +17,25 @@ int main(int ac, char **av, char **env)
 		exit(0);
 	}
 	fd = isatty(fd);
-	if (fd == 1)
+	while (1)
 	{
-		while (1)
-		{
-			n++;
+		n++;
+		if (fd == 1)
 			dprintf(STDOUT_FILENO, "#cisfun$ ");
-			buf = line(buf);
-			if (veri_buf(buf) == 1)
-			{
-				if (_strcmp(buf, "exit\n") == 0)
-				{
-					free(buf);
-					exit(status);
-				}
-				if (buf[0] != '\n')
-					status = pipes(buf, env, n);
-			}
-			free(buf);
-		}
-	}
-	else
-	{
 		buf = line(buf);
-		status = pipes(buf, env, 1);
+		if (buf == NULL)
+			exit(n);
+		if (veri_buf(buf) == 1)
+		{
+			if (_strcmp(buf, "exit\n") == 0)
+			{
+				free(buf);
+				exit(status);
+			}
+			if (buf[0] != '\n')
+				status = pipes(buf, env, n);
+		}
 		free(buf);
-		exit(status);
 	}
 	return (0);
 }
@@ -58,10 +51,7 @@ void *line(char *buf)
 
 	arg = getline(&buf, &buf_size, stdin);
 	if (arg == -1)
-	{
-		dprintf(STDERR_FILENO, "Error getting the value\n");
 		return (NULL);
-	}
 	return (buf);
 }
 /**
