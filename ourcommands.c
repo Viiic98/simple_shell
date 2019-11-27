@@ -32,12 +32,12 @@ void ourcommands(char **buf, char **env, int n)
 	i = 0;
 	while (i <= 2)
 	{
-		if (i == 0 && strcmp(ic, "cd") == 0)
+		if (i == 0 && _strcmp(ic, "cd") == 0)
 		{
 			_cd(arg, env);
 			break;
 		}
-		else if (i == 1 && strcmp(ic, "env") == 0)
+		else if (i == 1 && _strcmp(ic, "env") == 0)
 		{
 			_env(env);
 			break;

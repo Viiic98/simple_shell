@@ -84,7 +84,7 @@ char *_get_oldpwd(char **env)
 	int i;
 
 	for (i = 0; env[i] != '\0'; i++)
-		if (strncmp(env[i], "OLDPWD", 6) == 0)
+		if (_strncmp(env[i], "OLDPWD", 6) == 0)
 			break;
 	str2 = alloc_1(str2, env[i]);
 	str2 = strtok(str2, "=");
