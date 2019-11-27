@@ -1,9 +1,11 @@
 .TH _SIMPLE_SHELL 1 "22 Nov 2019" "Holberton School Cohort 10" "User Commands"
 .SH NAME
 _simple_shell
-- formatted output conversion
 .SH SYNOPSIS
 .DS
+
+\fBLIBRARIES\fP
+
 \fB#include <unistd.h>\fP
 
 \fB#include <sys/types.h>\fP
@@ -30,23 +32,74 @@ _simple_shell
 
 \fB#include <sys/resource.h>\fP
 
+\fB#include <string.h>\fP
+
+\fBMACROS\fP
+
+\fB#define DELIM "|\n"\fP
+
+\fB#define SIZE_BUF 1024\fP
+
+\fBPRINCIPAL FUNCTIONS\fP
+
 \fBvoid *line(char *);\fP
+
+\fBint exe_file(char *, char **, char **);\fP
+
+\fBint exe_command(char *, char **, char **);\fP
 
 \fBvoid _env(char **);\fP
 
-\fBvoid _cd(char **arg, char **env);\fP
+\fBint _cd(char **arg, char **env);\fP
 
-\fBvoid path(char *, char **, char **);\fP
+\fBint path(char *, char **, char **);\fP
 
-\fBvoid pipes(char*, char**);\fP
+\fBOTHER FUNCTIONS\fP
 
-\fBvoid ourcommands(char**, char**);\fP
+\fBint pipes(char*, char**);\fP
+
+\fBint ourcommands(char**, char**);\fP
 
 \fBint _strlen(char *);\fP
 
 \fBvoid print(char *);\fP
 
+\fBvoid printerr(char *, int, char *, char *);\fP
+
 \fBvoid *alloc_1(char *, char *);\fP
+
+\fBchar **alloc_2(char **, char *, char*, int);\fP
+
+\fBvoid _free(char **);\fP
+
+\fBchar *_strcpy(char *, char *);\fP
+
+\fBint _strcmp(char *, char *);\fP
+
+\fBint _strncmp(char *, char *, int);\fP
+
+\fBchar *_strcat(char *, char *);\fP
+
+\fBchar *_get_cwd(void);\fP
+
+\fBchar *_get_home(char **);\fP
+
+\fBchar *_get_oldpwd(char **);\fP
+
+\fBvoid _catch(int);\fP
+
+\fBint ferr(char *);\fP
+
+\fBchar *_itoa(int, char *);\fP
+
+\fBvoid *verify(char *);\fP
+
+\fBint _atoi(int, char *);\fP
+
+\fBint n_args(char *, char *);\fP
+
+\fBvoid _exit_arg(char *);\fP
+
 .PP
 \fB
 .DE
@@ -104,11 +157,15 @@ If exists an error, some messages are displayed for the user.
 
 \fB.. : Display the files and directories of the parent directory.\fP
 
+\fB- : Display the files and directories of the variable OLDPWD or previous directory.\fP
+
 \fBExamples\fP
 
 \fBcd ~\fP
 
 \fBcd folder_current_directory\fP
+
+\fBcd -\fP
 
 \fBCOMMAND\fP
 
@@ -192,13 +249,19 @@ If exists an error, some messages are displayed for the user.
 
 \fBCOMMAND\fP
 
+\fBexit\fP
+
 \fBDescription\fP
 
-\fBThe command exit allows to finish the execution of the Simple Shell.\fP
+\fBThe command exit allows to finish the execution of the Simple Shell. If the exit in the function has an argument, which must be an integer, the command must finish the program and then return to the normal shell and the value of "echo $?" must be an integer between 0 and 255. If the value of exit status is greater than 255, it must divide the value in 256 and get the integer value of the division, multiply by 256 and this value must be substracted from the status value.\fP
 
 \fBExample\fP
 
 \fBexit\fP
+
+\fBexit 98\fP
+
+\fBexit 300\fP
 
 .DE
 
