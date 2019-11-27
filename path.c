@@ -12,7 +12,7 @@ int path(char *ic, char **arg, char **env)
 	struct stat buf;
 
 	if (stat(ic, &buf) == 0)
-		nint_mode = exe_file(ic, arg, env);
+		return(exe_file(ic, arg, env));
 	else
 		nint_mode = ferr(ic);
 	if (nint_mode == 0)
@@ -37,7 +37,7 @@ int exe_file(char *ic, char **arg, char **env)
 	if (son == 0)
 		execve(arg[0], arg, env);
 	wait(&son);
-	return (1);
+	return (0);
 }
 /**
  * exe_command - execute a command
@@ -76,7 +76,7 @@ int exe_command(char *ic, char **arg, char **env)
 			wait(&son);
 			free(copy);
 			_free(dir);
-			return (1);
+			return (0);
 		}
 		free(copy);
 	}

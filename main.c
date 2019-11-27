@@ -27,7 +27,7 @@ int main(int ac, char **av, char **env)
 			if (_strcmp(buf, "exit\n") == 0)
 			{
 				free(buf);
-				exit(0);
+				exit(status);
 			}
 			if (buf[0] != '\n')
 				status = pipes(buf, env, n);
