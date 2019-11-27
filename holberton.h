@@ -26,7 +26,7 @@ void *line(char *);
 int exe_file(char *, char **, char **);
 int exe_command(char *, char **, char **);
 void _env(char **);
-void _cd(char **, char **);
+int _cd(char **, char **, int);
 int path(char *, char **, char **);
 
 /* Other functions */

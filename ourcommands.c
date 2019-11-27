@@ -4,7 +4,7 @@
  * pipes - separates line with pipes
  * @buf: line
  * @env: environment variables
- * @n: amount lines
+ * @n: amount of lines executed
  * Return: command status
  **/
 int pipes(char *buf, char **env, int n)
@@ -37,7 +37,7 @@ int ourcommands(char **buf, char **env, int n)
 	{
 		if (i == 0 && _strcmp(ic, "cd") == 0)
 		{
-			_cd(arg, env);
+			status = _cd(arg, env, n);
 			break;
 		}
 		else if (i == 1 && _strcmp(ic, "env") == 0)

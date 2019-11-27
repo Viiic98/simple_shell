@@ -3,9 +3,10 @@
  * _cd - function cd
  * @arg: arguments
  * @env: environment variables
+ * @n: amount of lines executed
  * Return: Nothing
  **/
-void _cd(char **arg, char **env)
+int _cd(char **arg, char **env, int n)
 {
 	int status;
 	char *str = '\0', *str2 = '\0', *str3 = '\0', *str_old = '\0';
@@ -31,9 +32,8 @@ void _cd(char **arg, char **env)
 		status = chdir(arg[1]);
 		if (status == -1)
 		{
-			print("-bash: cd: ");
-			print(arg[1]);
-			print(": No such file or directory\n");
+			dprintf(STDERR_FILENO, "bash: %d: cd: can't cd to %s\n", n, arg[1]);
+			return (2);
 		}
 		if (status != -1)
 		{
@@ -41,6 +41,7 @@ void _cd(char **arg, char **env)
 			setenv("OLDPWD", str_old, 1);
 		}
 	}
+	return (0);
 }
 /**
  * _get_cwd - function current path
