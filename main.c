@@ -51,7 +51,10 @@ void *line(char *buf)
 
 	arg = getline(&buf, &buf_size, stdin);
 	if (arg == -1)
+	{
+		free(buf);
 		return (NULL);
+	}
 	return (buf);
 }
 /**
