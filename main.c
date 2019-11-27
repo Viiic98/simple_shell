@@ -30,11 +30,11 @@ int main(int ac, char **av, char **env)
 				free(buf);
 				exit(0);
 			}
-			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
+/*			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
 			{
 				_exit_arg(buf);
 			}
-			if (buf[0] != '\n')
+*/			if (buf[0] != '\n')
 				pipes(buf, env, n);
 			free(buf);
 		}
