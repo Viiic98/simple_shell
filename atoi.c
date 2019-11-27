@@ -6,9 +6,9 @@
  **/
 int _atoi(int i, char* buf)
 {
-	char letters[10] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };   
-	int numbers[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	int j, k, res = 0, num, flag, n = 1, p, exp;
+	char letters[10] = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };   
+	int numbers[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+	int j, k, res = 0, num, flag, n = 1, p, exp, div = 0;
 
 	for (j = 0; buf[j] != '\0'; j++)
 	{
@@ -37,7 +37,10 @@ int _atoi(int i, char* buf)
 			exit(0);
 	}
 	if (res >= 256 && res < 2147483647)
-		return (res - 256);
+	{
+		div = res / 256;
+		return (res - (256 * div));
+	}
 	if (res < 256)
 		return (res);
 	return (0);
