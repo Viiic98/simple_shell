@@ -12,10 +12,12 @@ void print(char *str)
 	write(STDOUT_FILENO, str, len);
 }
 /**
- * _strlen - Fucntion that count characters of a string
+ * printerr - function that count characters of a string
  * @str: string
- * Return: Number of characters
- */
+ * @n: amount lines
+ * @ic: id command
+ * @str2: string 2
+ **/
 void printerr(char *str, int n, char *ic, char *str2)
 {
 	char *err = NULL, *num = malloc(sizeof(char *)), *a;
@@ -37,6 +39,11 @@ void printerr(char *str, int n, char *ic, char *str2)
 	write(STDERR_FILENO, err, len);
 	free(err);
 }
+/**
+ * _strlen - function strlen
+ * @str: string
+ * Return: Number of characters of the string
+ **/
 int _strlen(char *str)
 {
 	int len = 0;
@@ -64,6 +71,12 @@ char *_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+/**
+ * _itoa - function to change integer to string
+ * @n: integer
+ * @str: string
+ * Return: the integer converted to string
+ **/
 char *_itoa(int n, char *str)
 {
 	int i = 0, temp = n;
