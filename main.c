@@ -33,25 +33,7 @@ int main(int ac, char **av, char **env)
 			if (_strncmp(buf, "exit ", 5) == 0 && buf[5] != '\n')
 			{
 				_exit_arg(buf);
-			/*	if (buf[5] >= 48 && buf[5] <= 57)
-				{
-					for (i = 5; buf[i] != '\n'; i++);
-					status = malloc(sizeof(char *));
-					if (status != NULL)
-					{
-						for (i = 5, j = 0; buf[i] != '\n'; i++, j++)
-							status[j] = buf[i];
-						status[j] =  '\0';
-						k = _atoi(j, status);
-						free(status);
-						exit(k);
-					}
-				}
-				else
-				{	
-					exit(0);
-				}*/
-			}						
+			}
 			if (buf[0] != '\n')
 				pipes(buf, env, n);
 			free(buf);
@@ -121,7 +103,7 @@ void _exit_arg(char *buf)
 		}
 	}
 	else
-	{	
+	{
 		exit(0);
 	}
 }
