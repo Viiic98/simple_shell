@@ -50,6 +50,6 @@ int ferr(char *);
 char *_itoa(int, char *);
 void *verify(char *);
 int _atoi(int, char *);
-int n_args(char *, char *);
+int veri_buf(char *);
 void _exit_arg(char *);
 #endif

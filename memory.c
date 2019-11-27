@@ -82,23 +82,20 @@ void *verify(char *buf)
 	return (buf);
 }
 /**
- * n_args - function number arguments
+ * veri_buf - verify if buf is null
  * @buf: pointer to buffer
- * @delim: delimitators
- * Return: Integer number arguments
+ * Return: 1 if not is null, 0 if is null
  **/
-int n_args(char *buf, char *delim)
+int veri_buf(char *buf)
 {
-	int narg = 1, i = 0, j;
+	int narg = 0, i = 0;
 
 	while (buf[i])
 	{
-		j = 0;
-		while (delim[j])
+		if (buf[i] != ' ' && buf[i] != '\t' && buf[i] != '\n')
 		{
-			if (buf[i] == delim[j])
-				narg++;
-			j++;
+			narg++;
+			break;
 		}
 		i++;
 	}

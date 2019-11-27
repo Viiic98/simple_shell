@@ -24,13 +24,16 @@ int main(int ac, char **av, char **env)
 			n++;
 			dprintf(STDOUT_FILENO, "#cisfun$ ");
 			buf = line(buf);
-			if (_strcmp(buf, "exit\n") == 0)
+			if (veri_buf(buf) == 1)
 			{
-				free(buf);
-				exit(status);
+				if (_strcmp(buf, "exit\n") == 0)
+				{
+					free(buf);
+					exit(status);
+				}
+				if (buf[0] != '\n')
+					status = pipes(buf, env, n);
 			}
-			if (buf[0] != '\n')
-				status = pipes(buf, env, n);
 			free(buf);
 		}
 	}

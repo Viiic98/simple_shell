@@ -29,7 +29,7 @@ int ourcommands(char **buf, char **env, int n)
 	char **arg = NULL, *ic = NULL, *icopy = NULL;
 	int i, status = 0;
 
-	arg = alloc_2(arg, buf[0], "\"' \n");
+	arg = alloc_2(arg, buf[0], "\"'\t \n");
 	ic = alloc_1(ic, arg[0]);
 	icopy = alloc_1(icopy, ic);
 	i = 0;
