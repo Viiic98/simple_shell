@@ -3,10 +3,11 @@
  * _atoi - function to convert char to int
  * @i: length of second argument
  * @buf: chars second argument
+ * Return: integer with the value of exit function
  **/
-int _atoi(int i, char* buf)
+int _atoi(int i, char *buf)
 {
-	char letters[10] = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };   
+	char letters[10] = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 	int numbers[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 	int j, k, res = 0, num, flag, n = 1, p, exp, div = 0;
 
@@ -24,7 +25,7 @@ int _atoi(int i, char* buf)
 			}
 		}
 		if (flag == 1)
-		{			
+		{
 			for (p = i - n; p > 0; p--)
 				exp *= 10;
 			if (i - n > 0)
