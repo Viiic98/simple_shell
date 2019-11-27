@@ -61,7 +61,7 @@ This project was built by Victor Arteaga and Orlando Gomez.
 
 - t : Sort the list by modification time
 
-- -1 : Display all the files and directories line by line
+- 1 : Display all the files and directories line by line
 
 ### Examples
 
@@ -81,11 +81,15 @@ This project was built by Victor Arteaga and Orlando Gomez.
 
 - .. : Display the files and directories of the parent directory.
 
+- - : Display the files and directories of the path of the variable OLDPWD or previous directory.
+
 ### Examples
 
 - cd ~
 
 - cd folder_current_directory
+
+- cd -
 
 ## Command cp
 
