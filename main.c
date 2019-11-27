@@ -23,8 +23,8 @@ int main(int ac, char **av, char **env)
 		{
 			n++;
 			print("#cisfun$ ");
-			signal(SIGINT, _catch);
-			buf = line(buf);
+/*			signal(SIGINT, _catch);
+ */			buf = line(buf);
 			if (_strcmp(buf, "exit\n") == 0)
 			{
 				free(buf);
