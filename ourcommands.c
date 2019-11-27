@@ -51,7 +51,7 @@ int ourcommands(char **buf, char **env, int n)
 			if (status == 127)
 				dprintf(STDERR_FILENO, "bash: %d: %s: not found\n", n, icopy);
 			else if (status == 126)
-				dprintf(STDERR_FILENO, "sh: %d: %s: Permission denied\n", n, icopy);
+				dprintf(STDERR_FILENO, "bash: %d: %s: Permission denied\n", n, icopy);
 		}
 		i++;
 	}
