@@ -108,6 +108,8 @@ The \fBSimple Shell\fP is a project to understand the behavior of the Real Shell
 
 The steps in the process when you type a command are:
 
+1. Decide to type a command in interactive or non-interactive mode.
+
 .PP
 .RS -4
 \fBRETURN VALUE\fP
