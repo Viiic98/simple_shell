@@ -171,3 +171,8 @@ This project was built by Victor Arteaga and Orlando Gomez.
 
 - The non-interactive mode is the way that the shell receives the commands in second plain. Directly, you have to type the command that you want to execu
     te, the character pipe "|" and then the name of the compilated file of the simple shell.
+
+### STEPS OF THE PROGRAM
+
+The steps in the process when you type a command are:
+    
