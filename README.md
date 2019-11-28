@@ -175,4 +175,7 @@ This project was built by Victor Arteaga and Orlando Gomez.
 ### STEPS OF THE PROGRAM
 
 The steps in the process when you type a command are:
+
+
+1. Decide to type a command in interactive or non-interactive mode.
     
