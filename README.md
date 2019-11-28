@@ -184,3 +184,6 @@ The steps in the process when you type a command are:
 3. If you decide an non-interactive mode, you must run the compilated file with your command.
 
 Example : echo "/bin/ls" | ./hsh
+
+4. The Simple Shell evaluates the access mode (interactive or non-interactive) with the command isatty, which returns the value 1 if you use the interactive mode and other value if you use the non-interactive mode.
+   
