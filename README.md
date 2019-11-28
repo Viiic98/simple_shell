@@ -160,4 +160,14 @@ This project was built by Victor Arteaga and Orlando Gomez.
 
 - exit
 
+## Shell Modes
 
+### INTERACTIVE MODE
+
+- The interactive mode is the way that the shell receives the commands in first plain. First, you have to run the compilated file and then type the comma
+    nd line.
+
+### NON-INTERACTIVE MODE
+
+- The non-interactive mode is the way that the shell receives the commands in second plain. Directly, you have to type the command that you want to execu
+    te, the character pipe "|" and then the name of the compilated file of the simple shell.
