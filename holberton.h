@@ -18,7 +18,7 @@
 #include <string.h>
 
 /* MACROS */
-#define DELIM "\n"
+#define DELIM "|\n"
 #define SIZE_BUF 1024
 
 /* Principal functions */
