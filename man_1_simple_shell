@@ -106,6 +106,8 @@ _simple_shell
 .SH DESCRIPTION
 The \fBSimple Shell\fP is a project to understand the behavior of the Real Shell starting with the input data of the user and the error handles until the creation of functions like env and the calling of built-ins like pwd with the PATH and the command execve. 
 
+The steps in the process when you type a command are:
+
 .PP
 .RS -4
 \fBRETURN VALUE\fP
