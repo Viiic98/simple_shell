@@ -186,4 +186,33 @@ The steps in the process when you type a command are:
 Example : echo "/bin/ls" | ./hsh
 
 4. The Simple Shell evaluates the access mode (interactive or non-interactive) with the command isatty, which returns the value 1 if you use the interactive mode and other value if you use the non-interactive mode.
-   
+
+
+5. If you use interactive mode, the Simple Shell prints the prompt "#cisfun$ ".
+
+6. If you use non-interactive mode, the Simple Shell doesnt print the prompt "#cisfun$ ".
+
+7. The Simple Shell reads the commands with the command getline in a buffer as a single line.
+
+8. The Simple Shell counts all the characters of the line of the command getline what aren´t space, tab or new line.
+
+9. If the buffer has the string "exit" with new line ("exit\n"), the Simple Shell frees buffer memory and exit(0);
+
+10. If the buffer in the first position is different to '\n' or new line, the Simple Shell pass the environment variables, the buffer and the number of the counter of command lines for the shell (in other words, every command is accounted), to the function pipes, which will have a return value called status that is displayed with the command "echo $?".
+
+11. The function pipes separates in tokens all the buffer every time the character in the buffer was '|' or '\n'. A token is all the characters between the delimitators. For this action, the Simple Shell must allocate memory with a size of 1024. The return of this function is a pointer of strings.
+
+12. The pointer of strings is passed to the function ourcommands with the environment variables and the counter of the command line.
+
+13. The function ourcommands separates in parts all the pointer of strings when the character was ' \ ', ' " ', ' ' ', '\t' or '\n' in a new pointer of strings as also a simple pointer to the first argument that will be the command.The Simple Shell allocates memory for that purpose with the functions alloc1 and alloc2.
+
+14. The Simple evaluates the simple pointer (the command) and compares if the the command is "env", "cd" or if it´s other different command than "env" or "cd". For every case, the Simple Shell redirects to every specif function.
+
+15. If the pointer is "env", the Simple Shell uses the function _env to print all the environment variables in the screen.
+
+16. If the pointer is "cd", the Simple Shell uses the function _cd. This function changes to the directory that the user defines and sets the environment variables OLDPWD and PWD. The variable OLDPWD is the last directory where the user was and PWD is the current directory where the user is. If the command "cd" has a second argument, it must be evaluated too. If the second argument is "..", the Simple Shell must change to the parent directory; if the second argument is "-", the Simple Shell must change to the previous directory that the user was; if the second argument is a path to a directory, the Simple Shell must change to this path if it´s a directory; if there is not a second argument, the Simple Shell must change directory to "home" directory and in this case must take the environment variable "HOME" and uses this path. If the command is different to "cd" or "env", the Simple Shell uses the function "path".
+
+17. The function path gets the command, the tokens and the environment variables. First, the Simple Shell analyzes tif the path is of type directory and it´s, the Simple Shell returns the value 126. To do that, the Simple Shell uses the function stat that returns information about a file. If the command is really a command, the Simple Shell creates a child process and executes this command while the command exist. To prove this, the Simple Shell must take the variable PATH, and separate every intern path, concatenates the command and finds if this file exist in all the paths. If the command is really a path, for example, /bin/ls, the Simple Shell must prove that path exist and create a child process and executes this binary file.
+
+18. When the child process ends, it returns to the parent process which it´s waiting for the value return of the child process. For this process, the Simple Shell uses the command "fork" to create a child process and "wait" to define the point of return of the child process.
+
