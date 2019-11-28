@@ -104,7 +104,8 @@ _simple_shell
 \fB
 .DE
 .SH DESCRIPTION
-The \fBSimple Shell\fP is a project to understand the behavior of the Real Shell starting with the input data of the user and the error handles until the creation of functions like env and the calling of built-ins like pwd with the PATH and the command execve.
+The \fBSimple Shell\fP is a project to understand the behavior of the Real Shell starting with the input data of the user and the error handles until the creation of functions like env and the calling of built-ins like pwd with the PATH and the command execve. 
+
 .PP
 .RS -4
 \fBRETURN VALUE\fP
@@ -262,6 +263,16 @@ If exists an error, some messages are displayed for the user.
 \fBexit 98\fP
 
 \fBexit 300\fP
+
+\fB**SHELL MODES**\fP
+
+\fBINTERACTIVE MODE\fP
+
+\fBThe interactive mode is the way that the shell receives the commands in first plain. First, you have to run the compilated file and then type the command line.\fP
+
+\fBNON-INTERACTIVE\fP
+
+\fBThe non-interactive mode is the way that the shell receives the commands in second plain. Directly, you have to type the command that you want to execute, the character pipe "|" and then the name of the compilated file of the simple shell.\fP
 
 .DE
 
