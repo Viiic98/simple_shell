@@ -14,7 +14,7 @@ int main(int ac, char **av, char **env)
 	if (ac > 1)
 	{
 		dprintf(STDOUT_FILENO, "Can't execute the shell %s\n", av[0]);
-		exit(0);
+		exit(126);
 	}
 	fd = isatty(fd);
 	while (1)
