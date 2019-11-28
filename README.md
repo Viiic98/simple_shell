@@ -178,4 +178,5 @@ The steps in the process when you type a command are:
 
 
 1. Decide to type a command in interactive or non-interactive mode.
-    
+
+2. If you decide an interactive mode, you must run the compilated file with the statement "./compilatedfilename"
