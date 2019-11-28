@@ -6,9 +6,13 @@
  */
 int _env(char **env)
 {
-	int i;
+	int i, len = 0;
 
 	for (i = 0; env[i] != '\0'; i++)
-		dprintf(STDOUT_FILENO, "%s\n", env[i]);
+	{
+		len = _strlen(env[i]);
+		write(STDOUT_FILENO, env[i], len);
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	return (0);
 }
