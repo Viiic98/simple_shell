@@ -48,17 +48,17 @@ _simple_shell
 
 \fBint exe_command(char *, char **, char **);\fP
 
-\fBvoid _env(char **);\fP
+\fBint _env(char **);\fP
 
-\fBint _cd(char **arg, char **env);\fP
+\fBint _cd(char **, char **, int);\fP
 
 \fBint path(char *, char **, char **);\fP
 
 \fBOTHER FUNCTIONS\fP
 
-\fBint pipes(char*, char**);\fP
+\fBint pipes(char*, char**, int);\fP
 
-\fBint ourcommands(char**, char**);\fP
+\fBint ourcommands(char**, char**, int);\fP
 
 \fBint _strlen(char *);\fP
 
@@ -68,7 +68,7 @@ _simple_shell
 
 \fBvoid *alloc_1(char *, char *);\fP
 
-\fBchar **alloc_2(char **, char *, char*, int);\fP
+\fBchar **alloc_2(char **, char *, char*);\fP
 
 \fBvoid _free(char **);\fP
 
@@ -96,7 +96,7 @@ _simple_shell
 
 \fBint _atoi(int, char *);\fP
 
-\fBint n_args(char *, char *);\fP
+\fBint veri_buf(char *);\fP
 
 \fBvoid _exit_arg(char *);\fP
 
