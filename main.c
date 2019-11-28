@@ -21,7 +21,7 @@ int main(int ac, char **av, char **env)
 	{
 		n++;
 		if (fd == 1)
-			dprintf(STDOUT_FILENO, "#cisfun$ ");
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
 		buf = line(buf);
 		if (buf == NULL)
 			exit(status);
