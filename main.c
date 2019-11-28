@@ -13,8 +13,8 @@ int main(int ac, char **av, char **env)
 
 	if (ac > 1)
 	{
-		dprintf(STDOUT_FILENO, "Can't execute the shell %s\n", av[0]);
-		exit(126);
+		dprintf(STDERR_FILENO, "bash: 0: Can't open %s\n", av[1]);
+		exit(127);
 	}
 	fd = isatty(fd);
 	while (1)

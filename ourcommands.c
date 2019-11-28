@@ -42,7 +42,7 @@ int ourcommands(char **buf, char **env, int n)
 		}
 		else if (i == 1 && _strcmp(ic, "env") == 0)
 		{
-			_env(env);
+			status = _env(env);
 			break;
 		}
 		else if (i == 2)
