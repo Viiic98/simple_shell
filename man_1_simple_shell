@@ -116,6 +116,8 @@ The steps in the process when you type a command are:
 
 Example : echo "/bin/ls" | ./hsh
 
+4. The Simple Shell evaluates the access mode (interactive or non-interactive) with the command isatty, which returns the value 1 if you use the interactive mode and other value if you use the non-interactive mode.
+   
 .PP
 .RS -4
 \fBRETURN VALUE\fP
