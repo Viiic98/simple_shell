@@ -68,14 +68,14 @@ int exe_command(char *ic, char **arg, char **env)
 		if (stat(copy, &buf) == 0)
 		{
 			_strcpy(arg[0], copy);
+			free(copy);
+			_free(dir);
 			son = fork();
 			if (son == 0)
 				execve(arg[0], arg, env);
 			wait(&son);
 			if (WIFEXITED(son))
 				return (WEXITSTATUS(son));
-			free(copy);
-			_free(dir);
 			return (0);
 		}
 		free(copy);
